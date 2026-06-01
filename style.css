@@ -11,7 +11,7 @@ html {
 }
 
 body {
-  font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+  font-family: "Montserrat", "Segoe UI", Arial, sans-serif;
   background-color: #ffffff;
   color: #202027;
   line-height: 1.5;
@@ -56,7 +56,7 @@ a:focus {
   min-height: 800px;
   padding: 0 40px;
   background: #e1ff8f;
-  background-image: url('img/hero-bigstar.png');
+  background-image: url("img/hero-bigstar.png");
   background-repeat: no-repeat;
   background-position: right center;
   background-size: contain;
@@ -104,6 +104,12 @@ a:focus {
   top: 568px;
 }
 
+/* Мобильные звёзды скрыты на десктопе */
+.hero__star_mobile {
+  display: none;
+}
+
+
 .hero__container {
   position: relative;
   z-index: 2;
@@ -123,7 +129,7 @@ a:focus {
 }
 
 .hero__title {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-weight: 700;
   font-size: 64px;
   line-height: 1.22;
@@ -133,7 +139,7 @@ a:focus {
 }
 
 .hero__description {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-weight: 400;
   font-size: 24px;
   line-height: 1.4;
@@ -146,7 +152,7 @@ a:focus {
 }
 
 .hero__button {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-weight: 400;
   font-size: 24px;
   line-height: 1.42;
@@ -162,7 +168,9 @@ a:focus {
   background: #202027;
   border: 1px solid #202027;
   border-radius: 60px;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition:
+    background-color 0.3s ease,
+    transform 0.2s ease;
   margin-top: 24px;
 }
 
@@ -198,7 +206,7 @@ a:focus {
 }
 
 .scroll-line__item {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-weight: 700;
   font-size: 30px;
   line-height: 1.1;
@@ -231,7 +239,7 @@ a:focus {
   }
 }
 
-/* ABOUT GAMES  */
+/* Об играх  */
 .about-games {
   width: 100%;
   min-height: 1470px;
@@ -291,7 +299,7 @@ a:focus {
 }
 
 .about-games__title {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-weight: 700;
   font-size: 64px;
   line-height: 1.22;
@@ -299,7 +307,7 @@ a:focus {
 }
 
 .about-games__description {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-weight: 400;
   font-size: 24px;
   line-height: 1.4;
@@ -328,13 +336,14 @@ a:focus {
   width: 378px;
 }
 
-/*  GAME CARD */
+/*  МИНИИГРЫ */
 .game-card {
   width: 378px;
   background-color: #ffffff;
   border-radius: 30px;
   overflow: hidden;
-  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+  transition:
+    transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
     box-shadow 0.4s ease;
   transform-origin: center center;
   position: relative;
@@ -397,7 +406,7 @@ a:focus {
   padding: 8px 16px 10px;
   background: #f7f7f7;
   border-radius: 52.58px;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-weight: 500;
   font-size: 16px;
   line-height: 1.1;
@@ -405,7 +414,7 @@ a:focus {
 }
 
 .game-card__title {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-weight: 700;
   font-size: 32px;
   line-height: 1.22;
@@ -463,7 +472,7 @@ a:focus {
   background-color: #ffaaaa;
 }
 
-/* ===== АДАПТИВ ===== */
+/*  АДАПТИВ  */
 @media (max-width: 1280px) {
   .about-games__grid {
     width: 100%;
@@ -493,64 +502,572 @@ a:focus {
 }
 
 @media (max-width: 860px) {
-  .games-grid {
-    flex-direction: column;
-    align-items: center;
-    gap: 32px;
+  .about-games {
+    display: none;
   }
 
-  .games-grid__column {
-    width: 378px;
-  }
-
+  /*Мобила */
   .hero {
     padding: 0 20px;
-    min-height: 600px;
+    min-height: 725px;
+    background-position: center 80%;
+    background-size: 80% auto;
+    justify-content: flex-start;
+    padding-top: 147px;
+    background-image: none;
+  }
+
+  .hero__container {
+    padding: 0;
+    padding-bottom: 182px;
+  }
+
+  .hero__content {
+    align-items: center;
+    text-align: center;
+    gap: 24px;
+    padding-top: 0;
+    max-width: 343px;
+    margin: 0 auto;
   }
 
   .hero__title {
-    font-size: 36px;
+ /* Добро пожаловать на мой сайт мини-игр */
+
+width: 262px;
+height: 196px;
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 700;
+font-size: 40px;
+line-height: 49px;
+display: flex;
+align-items: center;
+text-align: center;
+color: #202027;
+font-family: Montserrat;
+font-style: Bold;
+letter-spacing: 0px;
+text-align: center;
+vertical-align: middle;
+
   }
 
   .hero__description {
-    font-size: 18px;
+    font-size: 16px;   
+    text-align: center;   
+/* Тебе предстоит пройти несколько увлекательных игр. Если готов, нажимай «Поехали!» и приступай. */
+width: 296px;
+height: 60px;
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 400;
+line-height: 20px;
   }
 
-  .about-games__title {
-    font-size: 36px;
+  .hero__button {
+    width: 285px;
+    height: 55px;
+    font-size: 16px;
+    margin-top: 12px;
+    font-family: Montserrat;
+font-weight: 600;
+font-style: SemiBold;
+font-size: 16px;
+line-height: 142%;
+letter-spacing: 0%;
+text-align: center;
+
   }
 
-  .about-games__description {
-    font-size: 18px;
+  /* Скрываю ховеры */
+  .hero__button:hover {
+    background-color: #202027;
+    color: #ffffff;
+    transform: none;
   }
 
-  .hero__container,
-  .about-games__container {
-    padding: 0 20px;
+  .game-play__button:hover {
+    background-color: #202027;
+    color: #ffffff;
+    border-color: #202027;
+  }
+
+  .scroll-line {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 16px;
+    gap: 4px;
+    width: 100%;
+    height: auto;
+    min-height: 36px;
+    background: #BCEC30;
+    border: 0.537198px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(13.4299px);
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .scroll-line__track {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 16px;
+    width: max-content;
+    height: auto;
+    animation: scroll-line-move 20s linear infinite;
+    width: 1669.402610456782;
+top: 649px;
+left: -6px;
+border-width: 0.54px;
+padding-top: 16px;
+padding-right: 24px;
+padding-bottom: 16px;
+padding-left: 24px;
+
   }
 
   .scroll-line__item {
-    font-size: 20px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.1;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #202027;
+    flex-shrink: 0;
+    height: auto;
+    display: flex;
+    align-items: center;
   }
 
-  .hero__star--top {
-    width: 40px;
-    height: 40px;
-    left: 20px;
-    top: 60px;
+  .scroll-line__separator {
+    width: 20px;
+    height: 15px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
-  .hero__star_down {
-    width: 25px;
-    height: 25px;
-    left: 70px;
-    top: 40px;
+  .scroll-line__separator svg {
+    width: 20px;
+    height: 20px;
   }
-
+.hero__star_top,
+  .hero__star_top-small,
+  .hero__star_down,
   .hero__star_down-big {
-    width: 60px;
-    height: 60px;
-    right: 20px;
-    top: 80px;
+    display: none;}
+
+  /* === НОВЫЕ МОБИЛЬНЫЕ ЗВЁЗДЫ === */
+  .hero__star_mobile {
+    display: block;
+    position: absolute;
+    z-index: 1;
+  }
+
+  .hero__star_mobile_top-left-big {
+    width: 35px;
+    height: 35px;
+    left: 38px;
+    top: 97px;
+  }
+
+  .hero__star_mobile_top-left-small {
+    width: 21px;
+    height: 21px;
+    left: 92px;
+    top: 64px;
+  }
+
+  .hero__star_mobile_top-right-big {           /*ПОПРАВЬ РАЗМЕРЫ!!!!!!!!!*/
+    width: auto;
+    height: auto;
+    right: -5px;
+    top: -5px;
+    transform: rotate(-1deg);
+    transform-origin: center center;
+
+
+
+
+    
+  }
+
+  .hero__star_mobile_bottom-right-small {
+    width: 18px;
+    height: 18px;
+    left: 273px;
+    top: 557px;
+  }
+
+  .hero__star_mobile_bottom-right-big {
+    width: 39px;
+    height: 41px;
+    left: 304px;
+    top: 580px;
+  }
+  /* === КОНЕЦ НОВЫХ МОБИЛЬНЫХ ЗВЁЗД === */
+
+.games-play {
+    padding: 48px 20px 48px;
+  }
+
+  .games-play__container {
+    padding: 0;
+    gap: 29.04px;
+    align-items: flex-start;
+  }
+
+  .games-play__title {
+    font-size: 40px;
+    line-height: 1.22;
+    padding: 0;
+    text-align: left;
+    margin-left: 0;
+    width: 100%;
+    max-width: 343px;
+  }
+
+  /* Картинка сверху */
+  .game-play {
+    flex-direction: column;
+    width: 100%;
+    max-width: 343px;
+    height: 626.63px;
+    border-radius: 30px;
+    overflow: hidden;
+    align-self: center;
+  }
+
+  .game-play__image-wrapper {
+    width: 100%;
+    height: 285px;
+    border-radius: 30px 30px 0 0;
+    order: -1;
+    flex-shrink: 0;
+  }
+
+  .game-play__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 30px 30px 0 0;
+  }
+
+  .game-play__content {
+    width: 100%;
+    height: 341.63px;
+    padding: 29px 29px 32px;
+    gap: 10px;
+    justify-content: flex-start;
+    flex-shrink: 0;
+  }
+
+  .game-play__name {
+    font-size: 32px;
+    line-height: 1.22;
+    max-width: 285px;
+
+
+
+    
+  }
+
+  .game-play__description {
+    font-size: 16px;
+    line-height: 1.4;
+    margin-top: 10px;
+    max-width: 285px;
+  }
+
+  .game-play__button {
+    width: 285px;
+    height: 55px;
+    font-size: 16px;
+    margin-top: 16px;
+  }
+
+  .footer {
+    height: 100px;
+  }
+
+  .footer__text {
+    font-size: 16px;
+  }
+}
+/* Играть */
+.games-play {
+  width: 100%;
+  background-color: #202027;
+  padding: 0 40px 144px;
+  position: relative;
+  overflow: hidden;
+}
+
+.games-play__container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 72px;
+}
+
+.games-play__title {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 64px;
+  color: #ffffff;
+  line-height: 1.22;
+  text-align: left;
+  width: 100%;
+  margin-left: 0;
+}
+
+.game-play {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  width: 100%;
+  height: 500px;
+  background: #ffffff;
+  box-shadow: 0px 20px 67px -12px rgba(0, 0, 0, 0.13);
+  border-radius: 30px;
+  overflow: hidden;
+}
+
+/*лево право */
+.game-play__content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 48px;
+  gap: 10px;
+  width: 600px;
+  height: 500px;
+  justify-content: center;
+
+
+
+  
+}
+
+.game-play__name {
+  line-height: 1.22;
+  color: #202027;
+  max-width: 504px;
+/* Угадай число */
+
+width: 504px;
+height: 59px;
+
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 700;
+font-size: 48px;
+line-height: 59px;
+/* identical to box height */
+display: flex;
+align-items: center;
+
+color: #202027;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+
+
+}
+
+.game-play__description {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 1.4;
+  color: #202027;
+  margin-top: 14px;
+  max-width: 457px;
+}
+
+.game-play__button {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 1.42;
+  text-align: center;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px 28px;
+  gap: 10px;
+  width: 247px;
+  height: 66px;
+  background: #202027;
+  border: 1px solid #202027;
+  border-radius: 60px;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease;
+  margin-top: 24px;
+  cursor: pointer;
+}
+
+.game-play__button:hover {
+  background-color: #ffffff;
+  color: #202027;
+  border-color: #202027;
+}
+
+.game-play__image-wrapper {
+  width: 600px;
+  height: 500px;
+  overflow: hidden;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.game-play__image-wrapper_purple {
+  background-color: #c8a8ff;
+}
+
+.game-play__image-wrapper_yellow {
+  background-color: #ffdd88;
+}
+
+.game-play__image-wrapper_blue {
+  background-color: #aaddff;
+}
+
+.game-play__image-wrapper_green {
+  background-color: #aaffaa;
+}
+
+.game-play__image-wrapper_lime {
+  background-color: #ddff88;
+}
+
+.game-play__image-wrapper_red {
+  background-color: #ffaaaa;
+}
+
+.game-play__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Убираю ховеры */
+.game-play:hover {
+  transform: none;
+  box-shadow: 0px 20px 67px -12px rgba(0, 0, 0, 0.13);
+}
+
+.footer {
+  width: 100%;
+  height: 150px;
+  background: #bded35;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer__text {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.25;
+  color: #202027;
+  text-align: center;
+}
+
+/* АДАПТИВ для миниигры */
+@media (max-width: 1280px) {
+  .game-play {
+    width: 100%;
+  }
+}
+
+@media (max-width: 1024px) {
+  .games-play__title {
+    font-size: 48px;
+    text-align: left;
+    width: 100%;
+  }
+
+  .game-play {
+    flex-direction: column;
+    height: auto;
+    width: 100%;
+  }
+
+  .game-play__content,
+  .game-play__image-wrapper {
+    width: 100%;
+    height: auto;
+  }
+
+  .game-play__image-wrapper {
+    height: 300px;
+  }
+
+  .game-play__name {
+    font-size: 36px;
+  }
+
+  .game-play__description {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 860px) {
+  .games-play__container {
+    padding: 0;
+    gap: 40px;
+  }
+
+  .games-play__title {
+    font-size: 36px;
+    text-align: left;
+    width: 100%;
+  }
+
+  .game-play__content {
+    padding: 32px 24px;
+  }
+
+  .game-play__name {
+    font-size: 28px;
+  }
+
+  .game-play__description {
+    font-size: 16px;
+  }
+
+  .game-play__button {
+    width: 100%;
+    max-width: 247px;
+    font-size: 18px;
+    height: 56px;
+  }
+
+  .game-play__image-wrapper {
+    height: 220px;
   }
 }
