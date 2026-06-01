@@ -16,7 +16,7 @@
     <div class="page">
       <!-- Блок: hero -->
       <section class="hero">
-        <!-- Звёздочки -->
+        <!-- Звёздочки десктоп -->
         <svg
           class="hero__star hero__star_top"
           width="57"
@@ -71,6 +71,89 @@
             stroke="#202027"
           />
         </svg>
+
+        <!-- === НОВЫЕ ЗВЁЗДЫ МОБИЛЬНОЙ ВЕРСИИ === -->
+        <!-- Верхняя левая большая звезда -->
+        <svg
+          class="hero__star hero__star_mobile hero__star_mobile_top-left-big"
+          width="35"
+          height="35"
+          viewBox="0 0 35 35"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M21.7578 12.9473L21.8379 13.1621L22.0527 13.2422L33.5586 17.5L22.0527 21.7578L21.8379 21.8379L21.7578 22.0527L17.5 33.5586L13.2422 22.0527L13.1621 21.8379L12.9473 21.7578L1.44043 17.5L12.9473 13.2422L13.1621 13.1621L13.2422 12.9473L17.5 1.44043L21.7578 12.9473Z"
+            fill="#BCEC30"
+            stroke="#202027"
+          />
+        </svg>
+
+        <!-- Верхняя левая малая звезда -->
+        <svg
+          class="hero__star hero__star_mobile hero__star_mobile_top-left-small"
+          width="21"
+          height="21"
+          viewBox="0 0 21 21"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M12.8672 7.83789L12.9473 8.05273L13.1621 8.13281L19.5586 10.5L13.1621 12.8672L12.9473 12.9473L12.8672 13.1621L10.5 19.5586L8.13281 13.1621L8.05273 12.9473L7.83789 12.8672L1.44043 10.5L7.83789 8.13281L8.05273 8.05273L8.13281 7.83789L10.5 1.44043L12.8672 7.83789Z"
+            stroke="#202027"
+          />
+        </svg>
+
+        <!-- Нижняя правая малая звезда -->
+        <svg
+          class="hero__star hero__star_mobile hero__star_mobile_bottom-right-small"
+          width="18"
+          height="18"
+          viewBox="0 0 18 18"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M10.9619 6.74316L11.042 6.95801L11.2568 7.03809L16.5586 9L11.2568 10.9619L11.042 11.042L10.9619 11.2568L9 16.5586L7.03809 11.2568L6.95801 11.042L6.74316 10.9619L1.44043 9L6.74316 7.03809L6.95801 6.95801L7.03809 6.74316L9 1.44043L10.9619 6.74316Z"
+            fill="#BCEC30"
+            stroke="#202027"
+          />
+        </svg>
+
+        <!-- Нижняя правая большая звезда -->
+        <svg
+          class="hero__star hero__star_mobile hero__star_mobile_bottom-right-big"
+          width="39"
+          height="41"
+          viewBox="0 0 39 41"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M24.2949 15.1289L24.3711 15.3457L24.5859 15.4287L37.6201 20.5L24.5859 25.5713L24.3711 25.6543L24.2949 25.8711L19.5 39.4932L14.7051 25.8711L14.6289 25.6543L14.4141 25.5713L1.37891 20.5L14.4141 15.4287L14.6289 15.3457L14.7051 15.1289L19.5 1.50586L24.2949 15.1289Z"
+            stroke="#202027"
+          />
+        </svg>
+
+        <!-- Верхняя большая звезда справа -->
+        <svg
+          class="hero__star hero__star_mobile hero__star_mobile_top-right-big"
+          width="160"
+          height="155"
+          viewBox="0 0 160 155"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M163.245 10.1084C166.091 10.8901 245.303 43.9262 245.303 43.9262L161.261 52.8255L214.355 120.072L139.504 74.1374L131.878 151.995L110.781 70.0034L40.4614 109.004L88.9017 51.7588L2.93664 47.8942L83.7388 23.992L23.6975 -44.2244L108.11 -5.0504L127.428 -80.6361L136.103 -4.88818L212.993 -57.1361L163.245 10.1084Z"
+            fill="#BCEC30"
+            stroke="#202027"
+            stroke-miterlimit="10"
+            stroke-linecap="round"
+          />
+        </svg>
+        <!-- === КОНЕЦ НОВЫХ ЗВЁЗД === -->
+
         <div class="hero__container">
           <div class="hero__content">
             <h1 class="hero__title">
@@ -84,7 +167,7 @@
             </p>
             <button
               class="hero__button"
-              onclick="document.getElementById('about-games').scrollIntoView({ behavior: 'smooth' })"
+              onclick="document.getElementById('games-play').scrollIntoView({ behavior: 'smooth' })"
             >
               Поехали!
             </button>
@@ -330,6 +413,91 @@
           </div>
         </div>
       </section>
+
+      <!-- Блок: games-play -->
+      <section class="games-play" id="games-play">
+        <div class="games-play__container">
+          <h2 class="games-play__title">Мини-игры</h2>
+
+          <!-- Игра 1: Угадай число -->
+          <div class="games-play__item game-play">
+            <div class="game-play__content">
+              <h3 class="game-play__name">Угадай число</h3>
+              <p class="game-play__description">Попробуй угадать случайное число от 1 до 100.</p>
+              <button class="game-play__button" onclick="alert('Игра в разработке')">Играть!</button>
+            </div>
+            <div class="game-play__image-wrapper game-play__image-wrapper_purple">
+              <img class="game-play__image" src="img/cart1.jpg" alt="Угадай число" />
+            </div>
+          </div>
+
+          <!-- Игра 2: Простая арифметика -->
+          <div class="games-play__item game-play">
+            <div class="game-play__image-wrapper game-play__image-wrapper_yellow">
+              <img class="game-play__image" src="img/cart2.jpg" alt="Простая арифметика" />
+            </div>
+            <div class="game-play__content">
+              <h3 class="game-play__name">Простая арифметика</h3>
+              <p class="game-play__description">Попробуй решить простые арифметические задачи.</p>
+              <button class="game-play__button" onclick="alert('Игра в разработке')">Играть!</button>
+            </div>
+          </div>
+
+          <!-- Игра 3: Переверни текст -->
+          <div class="games-play__item game-play">
+            <div class="game-play__content">
+              <h3 class="game-play__name">Переверни текст</h3>
+              <p class="game-play__description">Попробуй ввести текст, который будет перевернут.</p>
+              <button class="game-play__button" onclick="alert('Игра в разработке')">Играть!</button>
+            </div>
+            <div class="game-play__image-wrapper game-play__image-wrapper_blue">
+              <img class="game-play__image" src="img/cart3.jpg" alt="Переверни текст" />
+            </div>
+          </div>
+
+          <!-- Игра 4: Камень, ножницы, бумага -->
+          <div class="games-play__item game-play">
+            <div class="game-play__image-wrapper game-play__image-wrapper_green">
+              <img class="game-play__image" src="img/cart4.jpg" alt="Камень, ножницы, бумага" />
+            </div>
+            <div class="game-play__content">
+              <h3 class="game-play__name">Камень, ножницы, бумага</h3>
+              <p class="game-play__description">Сыграй в популярную игру против компьютера.</p>
+              <button class="game-play__button" onclick="alert('Игра в разработке')">Играть!</button>
+            </div>
+          </div>
+
+          <!-- Игра 5: Простая викторина -->
+          <div class="games-play__item game-play">
+            <div class="game-play__content">
+              <h3 class="game-play__name">Простая викторина</h3>
+              <p class="game-play__description">Отвечай на вопросы викторины с вариантами ответов.</p>
+              <button class="game-play__button" onclick="alert('Игра в разработке')">Играть!</button>
+            </div>
+            <div class="game-play__image-wrapper game-play__image-wrapper_lime">
+              <img class="game-play__image" src="img/cart5.jpg" alt="Простая викторина" />
+            </div>
+          </div>
+
+          <!-- Игра 6: Генератор случайных цветов -->
+          <div class="games-play__item game-play">
+            <div class="game-play__image-wrapper game-play__image-wrapper_red">
+              <img class="game-play__image" src="img/cart6.jpg" alt="Генератор случайных цветов" />
+            </div>
+            <div class="game-play__content">
+              <h3 class="game-play__name">Генератор случайных цветов</h3>
+              <p class="game-play__description">Игра, в которой при клике на кнопку фон страницы меняется на случайный.</p>
+              <button class="game-play__button" onclick="alert('Игра в разработке')">Играть!</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <p class="footer__text">Все права защищены.</p>
+      </footer>
+
     </div> 
     </body>
 </html>
