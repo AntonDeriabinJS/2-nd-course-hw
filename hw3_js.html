@@ -1,0 +1,423 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Домашнее задание 3 по JavaScript</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #0f172a;
+        color: #e2e8f0;
+        min-height: 100vh;
+        padding: 40px 20px;
+      }
+
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+      }
+
+      h1 {
+        text-align: center;
+        color: #38bdf8;
+        margin-bottom: 40px;
+        font-size: 2.2rem;
+        text-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
+      }
+
+      .task {
+        background-color: #1e293b;
+        border-radius: 16px;
+        padding: 28px 32px;
+        margin-bottom: 24px;
+        border-left: 4px solid #38bdf8;
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+
+      .task:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+      }
+
+      .task-number {
+        display: inline-block;
+        background-color: #38bdf8;
+        color: #0f172a;
+        font-weight: bold;
+        font-size: 0.85rem;
+        padding: 4px 14px;
+        border-radius: 20px;
+        margin-bottom: 12px;
+      }
+
+      .task-title {
+        font-size: 1.3rem;
+        color: #f1f5f9;
+        margin-bottom: 12px;
+      }
+
+      .task-description {
+        color: #94a3b8;
+        margin-bottom: 16px;
+        line-height: 1.6;
+      }
+
+      .code-block {
+        background-color: #0f172a;
+        border-radius: 10px;
+        padding: 20px 24px;
+        overflow-x: auto;
+        border: 1px solid #334155;
+      }
+
+      .code-block pre {
+        margin: 0;
+        font-family: "Consolas", "Monaco", "Courier New", monospace;
+        font-size: 0.95rem;
+        line-height: 1.7;
+        color: #e2e8f0;
+      }
+
+      .code-block .comment {
+        color: #64748b;
+      }
+
+      .code-block .keyword {
+        color: #c084fc;
+      }
+
+      .code-block .string {
+        color: #4ade80;
+      }
+
+      .code-block .function {
+        color: #60a5fa;
+      }
+
+      .code-block .number {
+        color: #fbbf24;
+      }
+
+      .result {
+        margin-top: 16px;
+        padding: 14px 18px;
+        background-color: #0f172a;
+        border-radius: 10px;
+        border: 1px solid #334155;
+      }
+
+      .result-label {
+        font-size: 0.8rem;
+        color: #38bdf8;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 8px;
+      }
+
+      .result-output {
+        font-family: "Consolas", "Monaco", "Courier New", monospace;
+        color: #4ade80;
+        font-size: 0.95rem;
+      }
+
+      .btn {
+        display: inline-block;
+        margin-top: 14px;
+        padding: 10px 24px;
+        background-color: #38bdf8;
+        color: #0f172a;
+        border: none;
+        border-radius: 8px;
+        font-size: 0.95rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition:
+          background-color 0.2s ease,
+          transform 0.15s ease;
+      }
+
+      .btn:hover {
+        background-color: #7dd3fc;
+        transform: scale(1.03);
+      }
+
+      .btn:active {
+        transform: scale(0.98);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Домашнее задание 3 по JavaScript</h1>
+
+      <!-- Задание 1 -->
+      <div class="task">
+        <span class="task-number">Задание 1</span>
+        <h2 class="task-title">Проверка пароля</h2>
+        <p class="task-description">
+          Создайте переменную с паролем, запросите ввод у пользователя через
+          prompt() и проверьте совпадение.
+        </p>
+        <div class="code-block">
+          <pre><span class="comment">// Задание 1: Проверка пароля</span>
+<span class="keyword">let</span> password = <span class="string">'пароль'</span>;
+<span class="keyword">let</span> userInput = <span class="function">prompt</span>(<span class="string">'Введите пароль'</span>);
+
+<span class="keyword">if</span> (userInput === password) {
+    <span class="function">alert</span>(<span class="string">'Пароль введен верно'</span>);
+} <span class="keyword">else</span> {
+    <span class="function">alert</span>(<span class="string">'Пароль введен неправильно'</span>);
+}</pre>
+        </div>
+        <button class="btn" onclick="runTask1()">Запустить задание 1</button>
+        <div class="result" id="result1" style="display: none">
+          <div class="result-label">Результат</div>
+          <div class="result-output" id="output1"></div>
+        </div>
+      </div>
+
+      <!-- Задание 2 -->
+      <div class="task">
+        <span class="task-number">Задание 2</span>
+        <h2 class="task-title">Проверка диапазона числа (логическое И)</h2>
+        <p class="task-description">
+          Переменная c должна быть больше 0 и меньше 10. Проверьте значения: 0,
+          10, -3, 2.
+        </p>
+        <div class="code-block">
+          <pre><span class="comment">// Задание 2: Проверка диапазона с помощью &&</span>
+<span class="keyword">let</span> c = <span class="number">2</span>; <span class="comment">// Можно менять: 0, 10, -3, 2</span>
+
+<span class="keyword">if</span> (c > <span class="number">0</span> && c < <span class="number">10</span>) {
+    console.<span class="function">log</span>(<span class="string">'Верно'</span>);
+} <span class="keyword">else</span> {
+    console.<span class="function">log</span>(<span class="string">'Неверно'</span>);
+}</pre>
+        </div>
+        <button class="btn" onclick="runTask2()">Запустить задание 2</button>
+        <div class="result" id="result2">
+          <div class="result-label">Результаты проверки</div>
+          <div class="result-output" id="output2"></div>
+        </div>
+      </div>
+
+      <!-- Задание 3 -->
+      <div class="task">
+        <span class="task-number">Задание 3</span>
+        <h2 class="task-title">
+          Проверка на число больше 100 (логическое ИЛИ)
+        </h2>
+        <p class="task-description">
+          Если хотя бы одна из переменных d или e больше 100 — выводим «Верно».
+        </p>
+        <div class="code-block">
+          <pre><span class="comment">// Задание 3: Проверка с помощью ||</span>
+<span class="keyword">let</span> d = <span class="number">50</span>;
+<span class="keyword">let</span> e = <span class="number">120</span>;
+
+<span class="keyword">if</span> (d > <span class="number">100</span> || e > <span class="number">100</span>) {
+    console.<span class="function">log</span>(<span class="string">'Верно'</span>);
+} <span class="keyword">else</span> {
+    console.<span class="function">log</span>(<span class="string">'Неверно'</span>);
+}</pre>
+        </div>
+        <button class="btn" onclick="runTask3()">Запустить задание 3</button>
+        <div class="result" id="result3" style="display: none">
+          <div class="result-label">Результат</div>
+          <div class="result-output" id="output3"></div>
+        </div>
+      </div>
+
+      <!-- Задание 4 -->
+      <div class="task">
+        <span class="task-number">Задание 4</span>
+        <h2 class="task-title">Преобразование типов</h2>
+        <p class="task-description">
+          Исправьте код с помощью преобразования типов, чтобы на экран
+          выводилось число 5, а не строка '23'.
+        </p>
+        <div class="code-block">
+          <pre><span class="comment">// Задание 4: Преобразование типов</span>
+<span class="keyword">let</span> a = <span class="string">'2'</span>;
+<span class="keyword">let</span> b = <span class="string">'3'</span>;
+<span class="comment">// Код выше изменять нельзя</span>
+
+<span class="comment">// Решение: преобразуем строки в числа</span>
+<span class="function">alert</span>(<span class="function">Number</span>(a) + <span class="function">Number</span>(b));
+<span class="comment">// или: alert(+a + +b);</span>
+<span class="comment">// или: alert(parseInt(a) + parseInt(b));</span></pre>
+        </div>
+        <button class="btn" onclick="runTask4()">Запустить задание 4</button>
+        <div class="result" id="result4" style="display: none">
+          <div class="result-label">Результат</div>
+          <div class="result-output" id="output4"></div>
+        </div>
+      </div>
+
+      <!-- Задание 5 -->
+      <div class="task">
+        <span class="task-number">Задание 5</span>
+        <h2 class="task-title">Определение сезона по номеру месяца</h2>
+        <p class="task-description">
+          Напишите программу, которая по номеру месяца определяет сезон.
+          Используйте оператор switch.
+        </p>
+        <div class="code-block">
+          <pre><span class="comment">// Задание 5: Определение сезона</span>
+<span class="keyword">let</span> monthNumber = <span class="number">12</span>;
+
+<span class="keyword">if</span> (monthNumber > <span class="number">13</span> || monthNumber < <span class="number">1</span>) {
+    console.<span class="function">log</span>(<span class="string">'Некорректный номер месяца'</span>);
+} <span class="keyword">else</span> {
+    <span class="keyword">switch</span> (monthNumber) {
+        <span class="keyword">case</span> <span class="number">12</span>:
+        <span class="keyword">case</span> <span class="number">1</span>:
+        <span class="keyword">case</span> <span class="number">2</span>:
+            console.<span class="function">log</span>(<span class="string">'зима'</span>);
+            <span class="keyword">break</span>;
+        <span class="keyword">case</span> <span class="number">3</span>:
+        <span class="keyword">case</span> <span class="number">4</span>:
+        <span class="keyword">case</span> <span class="number">5</span>:
+            console.<span class="function">log</span>(<span class="string">'весна'</span>);
+            <span class="keyword">break</span>;
+        <span class="keyword">case</span> <span class="number">6</span>:
+        <span class="keyword">case</span> <span class="number">7</span>:
+        <span class="keyword">case</span> <span class="number">8</span>:
+            console.<span class="function">log</span>(<span class="string">'лето'</span>);
+            <span class="keyword">break</span>;
+        <span class="keyword">case</span> <span class="number">9</span>:
+        <span class="keyword">case</span> <span class="number">10</span>:
+        <span class="keyword">case</span> <span class="number">11</span>:
+            console.<span class="function">log</span>(<span class="string">'осень'</span>);
+            <span class="keyword">break</span>;
+        <span class="keyword">default</span>:
+            console.<span class="function">log</span>(<span class="string">'Некорректный номер месяца'</span>);
+    }
+}</pre>
+        </div>
+        <button class="btn" onclick="runTask5()">Запустить задание 5</button>
+        <div class="result" id="result5" style="display: none">
+          <div class="result-label">Результат</div>
+          <div class="result-output" id="output5"></div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Задание 1: Проверка пароля
+      function runTask1() {
+        let password = "пароль";
+        let userInput = prompt("Введите пароль");
+        let result;
+
+        if (userInput === password) {
+          result = "Пароль введен верно";
+          alert(result);
+        } else {
+          result = "Пароль введен неправильно";
+          alert(result);
+        }
+
+        document.getElementById("result1").style.display = "block";
+        document.getElementById("output1").textContent =
+          'Введено: "' + userInput + '" → ' + result;
+      }
+
+      // Задание 2: Проверка диапазона
+      function runTask2() {
+        let results = [];
+        let testValues = [0, 10, -3, 2];
+
+        for (let c of testValues) {
+          if (c > 0 && c < 10) {
+            results.push("c = " + c + " → Верно");
+          } else {
+            results.push("c = " + c + " → Неверно");
+          }
+        }
+
+        document.getElementById("output2").innerHTML = results.join("<br>");
+      }
+
+      // Автоматически запускается 2 при загрузке
+      runTask2();
+
+      //  Задание 3: Логическое ИЛИ
+      function runTask3() {
+        let d = 50;
+        let e = 120;
+        let result;
+
+        if (d > 100 || e > 100) {
+          result = "Верно (хотя бы одно число > 100)";
+        } else {
+          result = "Неверно (ни одно число не > 100)";
+        }
+
+        document.getElementById("result3").style.display = "block";
+        document.getElementById("output3").textContent =
+          "d = " + d + ", e = " + e + " → " + result;
+      }
+
+      // Задание 4: 
+      function runTask4() {
+        let a = "2";
+        let b = "3";
+        // Преобразование строк в числа
+        let sum = Number(a) + Number(b);
+
+        document.getElementById("result4").style.display = "block";
+        document.getElementById("output4").textContent =
+          "Number('2') + Number('3') = " + sum;
+      }
+
+      // Задание 5: Определение сезона 
+      function runTask5() {
+        let monthNumber = 12;
+        let season;
+
+        if (monthNumber > 13 || monthNumber < 1) {
+          season = "Некорректный номер месяца";
+        } else {
+          switch (monthNumber) {
+            case 12:
+            case 1:
+            case 2:
+              season = "зима";
+              break;
+            case 3:
+            case 4:
+            case 5:
+              season = "весна";
+              break;
+            case 6:
+            case 7:
+            case 8:
+              season = "лето";
+              break;
+            case 9:
+            case 10:
+            case 11:
+              season = "осень";
+              break;
+            default:
+              season = "Некорректный номер месяца";
+          }
+        }
+
+        document.getElementById("result5").style.display = "block";
+        document.getElementById("output5").textContent =
+          "Месяц №" + monthNumber + " → сезон: " + season;
+      }
+    </script>
+  </body>
+</html>
