@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Домашнее задание по JavaScript</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #0f172a;
+        color: #e2e8f0;
+        min-height: 100vh;
+        padding: 40px 20px;
+      }
+
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+      }
+
+      h1 {
+        text-align: center;
+        color: #38bdf8;
+        margin-bottom: 40px;
+        font-size: 2.2rem;
+        text-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
+      }
+
+      .task {
+        background-color: #1e293b;
+        border-radius: 16px;
+        padding: 28px 32px;
+        margin-bottom: 24px;
+        border-left: 4px solid #38bdf8;
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+
+      .task:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+      }
+
+      .task-number {
+        display: inline-block;
+        background-color: #38bdf8;
+        color: #0f172a;
+        font-weight: bold;
+        font-size: 0.85rem;
+        padding: 4px 14px;
+        border-radius: 20px;
+        margin-bottom: 12px;
+      }
+
+      .task-title {
+        font-size: 1.3rem;
+        color: #f1f5f9;
+        margin-bottom: 12px;
+      }
+
+      .task-description {
+        color: #94a3b8;
+        margin-bottom: 16px;
+        line-height: 1.6;
+      }
+
+      .code-block {
+        background-color: #0f172a;
+        border-radius: 10px;
+        padding: 20px 24px;
+        overflow-x: auto;
+        border: 1px solid #334155;
+      }
+
+      .code-block pre {
+        margin: 0;
+        font-family: "Consolas", "Monaco", "Courier New", monospace;
+        font-size: 0.95rem;
+        line-height: 1.7;
+        color: #e2e8f0;
+      }
+
+      .code-block .comment {
+        color: #64748b;
+      }
+
+      .code-block .keyword {
+        color: #c084fc;
+      }
+
+      .code-block .string {
+        color: #4ade80;
+      }
+
+      .code-block .function {
+        color: #60a5fa;
+      }
+
+      .code-block .number {
+        color: #fbbf24;
+      }
+
+      .result {
+        margin-top: 16px;
+        padding: 14px 18px;
+        background-color: #0f172a;
+        border-radius: 10px;
+        border: 1px solid #334155;
+      }
+
+      .result-label {
+        font-size: 0.8rem;
+        color: #38bdf8;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 8px;
+      }
+
+      .result-output {
+        font-family: "Consolas", "Monaco", "Courier New", monospace;
+        color: #4ade80;
+        font-size: 0.95rem;
+        line-height: 1.6;
+      }
+
+      .btn {
+        display: inline-block;
+        margin-top: 14px;
+        padding: 10px 24px;
+        background-color: #38bdf8;
+        color: #0f172a;
+        border: none;
+        border-radius: 8px;
+        font-size: 0.95rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition:
+          background-color 0.2s ease,
+          transform 0.15s ease;
+      }
+
+      .btn:hover {
+        background-color: #7dd3fc;
+        transform: scale(1.03);
+      }
+
+      .btn:active {
+        transform: scale(0.98);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Домашнее задание по JavaScript</h1>
+
+      <!-- Задание 1 -->
+      <div class="task">
+        <span class="task-number">Задание 1</span>
+        <h2 class="task-title">Вывод слова «Привет» 2 раза</h2>
+        <p class="task-description">
+          Выведите в консоль слово «Привет» 2 раза, используя цикл.
+        </p>
+        <div class="code-block">
+          <pre><span class="comment">// Задание 1: Вывод "Привет" 2 раза</span>
+<span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i < <span class="number">2</span>; i++) {
+    console.<span class="function">log</span>(<span class="string">"Привет"</span>);
+}</pre>
+        </div>
+        <button class="btn" onclick="runTask1()">Запустить задание 1</button>
+        <div class="result" id="result1" style="display: none">
+          <div class="result-label">Результат</div>
+          <div class="result-output" id="output1"></div>
+        </div>
+      </div>
+
+      <!-- Задание 2 -->
+      <div class="task">
+        <span class="task-number">Задание 2</span>
+        <h2 class="task-title">Цифры от 1 до 5</h2>
+        <p class="task-description">
+          Выведите в консоль цифры от 1 до 5, используя цикл.
+        </p>
+        <div class="code-block">
+          <pre><span class="comment">// Задание 2: Цифры от 1 до 5</span>
+<span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">1</span>; i <= <span class="number">5</span>; i++) {
+    console.<span class="function">log</span>(i);
+}</pre>
+        </div>
+        <button class="btn" onclick="runTask2()">Запустить задание 2</button>
+        <div class="result" id="result2" style="display: none">
+          <div class="result-label">Результат</div>
+          <div class="result-output" id="output2"></div>
+        </div>
+      </div>
+
+      <!-- Задание 3 -->
+      <div class="task">
+        <span class="task-number">Задание 3</span>
+        <h2 class="task-title">Числа от 7 до 22</h2>
+        <p class="task-description">
+          Выведите в консоль числа от 7 до 22, используя цикл.
+        </p>
+        <div class="code-block">
+          <pre><span class="comment">// Задание 3: Числа от 7 до 22</span>
+<span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">7</span>; i <= <span class="number">22</span>; i++) {
+    console.<span class="function">log</span>(i);
+}</pre>
+        </div>
+        <button class="btn" onclick="runTask3()">Запустить задание 3</button>
+        <div class="result" id="result3" style="display: none">
+          <div class="result-label">Результат</div>
+          <div class="result-output" id="output3"></div>
+        </div>
+      </div>
+
+      <!-- Задание 4 -->
+      <div class="task">
+        <span class="task-number">Задание 4</span>
+        <h2 class="task-title">Зарплаты сотрудников</h2>
+        <p class="task-description">
+          Объект содержит имена сотрудников и их зарплаты. Пройдитесь по объекту с помощью цикла for-in и выведите информацию о каждом сотруднике.
+        </p>
+        <div class="code-block">
+          <pre><span class="comment">// Задание 4: Зарплаты сотрудников</span>
+<span class="keyword">let</span> obj = {
+    <span class="string">"Коля"</span>: <span class="string">'200'</span>,
+    <span class="string">"Вася"</span>: <span class="string">'300'</span>,
+    <span class="string">"Петя"</span>: <span class="string">'400'</span>
+};
+
+<span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">in</span> obj) {
+    console.<span class="function">log</span>(key + <span class="string">" — зарплата "</span> + obj[key] + <span class="string">" долларов"</span>);
+}</pre>
+        </div>
+        <button class="btn" onclick="runTask4()">Запустить задание 4</button>
+        <div class="result" id="result4" style="display: none">
+          <div class="result-label">Результат</div>
+          <div class="result-output" id="output4"></div>
+        </div>
+      </div>
+
+      <!-- Задание 5 -->
+      <div class="task">
+        <span class="task-number">Задание 5</span>
+        <h2 class="task-title">Деление числа на 2</h2>
+        <p class="task-description">
+          Дано число n = 1000. Делите его на 2 до тех пор, пока результат не станет меньше 50. Определите полученное число и количество итераций.
+        </p>
+        <div class="code-block">
+          <pre><span class="comment">// Задание 5: Деление на 2</span>
+<span class="keyword">let</span> n = <span class="number">1000</span>;
+<span class="keyword">let</span> num = <span class="number">0</span>;
+
+<span class="keyword">while</span> (n >= <span class="number">50</span>) {
+    n = n / <span class="number">2</span>;
+    num++;
+}
+
+console.<span class="function">log</span>(<span class="string">"Результат: "</span> + n);
+console.<span class="function">log</span>(<span class="string">"Количество итераций: "</span> + num);</pre>
+        </div>
+        <button class="btn" onclick="runTask5()">Запустить задание 5</button>
+        <div class="result" id="result5" style="display: none">
+          <div class="result-label">Результат</div>
+          <div class="result-output" id="output5"></div>
+        </div>
+      </div>
+
+      <!-- Задание 6 -->
+      <div class="task">
+        <span class="task-number">Задание 6</span>
+        <h2 class="task-title">Напоминание о пятнице</h2>
+        <p class="task-description">
+          Напишите программу, которая определяет все пятницы месяца (31 день) и выводит напоминание о подготовке отчёта.
+        </p>
+        <div class="code-block">
+          <pre><span class="comment">// Задание 6: Пятницы месяца</span>
+<span class="keyword">let</span> firstFriday = <span class="number">5</span>; <span class="comment">// Номер первой пятницы (от 1 до 7)</span>
+
+<span class="keyword">for</span> (<span class="keyword">let</span> day = firstFriday; day <= <span class="number">31</span>; day += <span class="number">7</span>) {
+    console.<span class="function">log</span>(<span class="string">"Сегодня пятница, "</span> + day + <span class="string">"-е число. Необходимо подготовить отчет."</span>);
+}</pre>
+        </div>
+        <button class="btn" onclick="runTask6()">Запустить задание 6</button>
+        <div class="result" id="result6" style="display: none">
+          <div class="result-label">Результат</div>
+          <div class="result-output" id="output6"></div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Задание 1: Вывод "Привет" 2 раза
+      function runTask1() {
+        let output = [];
+        for (let i = 0; i < 2; i++) {
+          console.log("Привет");
+          output.push("Привет");
+        }
+        document.getElementById("result1").style.display = "block";
+        document.getElementById("output1").innerHTML = output.join("<br>");
+      }
+
+      // Задание 2: Цифры от 1 до 5
+      function runTask2() {
+        let output = [];
+        for (let i = 1; i <= 5; i++) {
+          console.log(i);
+          output.push(i);
+        }
+        document.getElementById("result2").style.display = "block";
+        document.getElementById("output2").innerHTML = output.join("<br>");
+      }
+
+      // Задание 3: Числа от 7 до 22
+      function runTask3() {
+        let output = [];
+        for (let i = 7; i <= 22; i++) {
+          console.log(i);
+          output.push(i);
+        }
+        document.getElementById("result3").style.display = "block";
+        document.getElementById("output3").innerHTML = output.join("<br>");
+      }
+
+      // Задание 4: Зарплаты сотрудников
+      function runTask4() {
+        let obj = {
+          "Коля": '200',
+          "Вася": '300',
+          "Петя": '400'
+        };
+        let output = [];
+        for (let key in obj) {
+          let line = key + " — зарплата " + obj[key] + " долларов";
+          console.log(line);
+          output.push(line);
+        }
+        document.getElementById("result4").style.display = "block";
+        document.getElementById("output4").innerHTML = output.join("<br>");
+      }
+
+      // Задание 5: Деление на 2
+      function runTask5() {
+        let n = 1000;
+        let num = 0;
+
+        while (n >= 50) {
+          n = n / 2;
+          num++;
+        }
+
+        console.log("Результат: " + n);
+        console.log("Количество итераций: " + num);
+
+        document.getElementById("result5").style.display = "block";
+        document.getElementById("output5").innerHTML = 
+          "Результат: " + n + "<br>Количество итераций: " + num;
+      }
+
+      // Задание 6: Пятницы месяца
+      function runTask6() {
+        let firstFriday = 5; // Номер первой пятницы (от 1 до 7)
+        let output = [];
+
+        for (let day = firstFriday; day <= 31; day += 7) {
+          let line = "Сегодня пятница, " + day + "-е число. Необходимо подготовить отчет.";
+          console.log(line);
+          output.push(line);
+        }
+
+        document.getElementById("result6").style.display = "block";
+        document.getElementById("output6").innerHTML = output.join("<br>");
+      }
+    </script>
+  </body>
+</html>
