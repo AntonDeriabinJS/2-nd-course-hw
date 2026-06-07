@@ -1,0 +1,613 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Домашка 5 — Функции</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #0f172a;
+        color: #e2e8f0;
+        min-height: 100vh;
+        padding: 40px 20px;
+      }
+
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+      }
+
+      h1 {
+        text-align: center;
+        color: #38bdf8;
+        margin-bottom: 40px;
+        font-size: 2.2rem;
+        text-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
+      }
+
+      .task {
+        background-color: #1e293b;
+        border-radius: 16px;
+        padding: 28px 32px;
+        margin-bottom: 24px;
+        border-left: 4px solid #38bdf8;
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+
+      .task:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+      }
+
+      .task-number {
+        display: inline-block;
+        background-color: #38bdf8;
+        color: #0f172a;
+        font-weight: bold;
+        font-size: 0.85rem;
+        padding: 4px 14px;
+        border-radius: 20px;
+        margin-bottom: 12px;
+      }
+
+      .task-title {
+        font-size: 1.3rem;
+        color: #f1f5f9;
+        margin-bottom: 12px;
+      }
+
+      .task-description {
+        color: #94a3b8;
+        margin-bottom: 16px;
+        line-height: 1.6;
+      }
+
+      .code-block {
+        background-color: #0f172a;
+        border-radius: 10px;
+        padding: 20px 24px;
+        overflow-x: auto;
+        border: 1px solid #334155;
+      }
+
+      .code-block pre {
+        margin: 0;
+        font-family: "Consolas", "Monaco", "Courier New", monospace;
+        font-size: 0.95rem;
+        line-height: 1.7;
+        color: #e2e8f0;
+      }
+
+      .code-block .comment {
+        color: #64748b;
+      }
+
+      .code-block .keyword {
+        color: #c084fc;
+      }
+
+      .code-block .string {
+        color: #4ade80;
+      }
+
+      .code-block .function {
+        color: #60a5fa;
+      }
+
+      .code-block .number {
+        color: #fbbf24;
+      }
+
+      .result {
+        margin-top: 16px;
+        padding: 14px 18px;
+        background-color: #0f172a;
+        border-radius: 10px;
+        border: 1px solid #334155;
+      }
+
+      .result-label {
+        font-size: 0.8rem;
+        color: #38bdf8;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 8px;
+      }
+
+      .result-output {
+        font-family: "Consolas", "Monaco", "Courier New", monospace;
+        color: #4ade80;
+        font-size: 0.95rem;
+        line-height: 1.6;
+      }
+
+      .result-output .warn {
+        color: #fbbf24;
+      }
+
+      .result-output .error {
+        color: #f87171;
+      }
+
+      .btn {
+        display: inline-block;
+        margin-top: 14px;
+        padding: 10px 24px;
+        background-color: #38bdf8;
+        color: #0f172a;
+        border: none;
+        border-radius: 8px;
+        font-size: 0.95rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition:
+          background-color 0.2s ease,
+          transform 0.15s ease;
+      }
+
+      .btn:hover {
+        background-color: #7dd3fc;
+        transform: scale(1.03);
+      }
+
+      .btn:active {
+        transform: scale(0.98);
+      }
+
+      .input-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 12px;
+        align-items: center;
+      }
+
+      .input-group label {
+        color: #94a3b8;
+        font-size: 0.9rem;
+      }
+
+      .input-group input {
+        background-color: #0f172a;
+        border: 1px solid #334155;
+        border-radius: 6px;
+        padding: 8px 12px;
+        color: #e2e8f0;
+        font-family: "Consolas", "Monaco", "Courier New", monospace;
+        font-size: 0.9rem;
+        outline: none;
+        transition: border-color 0.2s ease;
+      }
+
+      .input-group input:focus {
+        border-color: #38bdf8;
+      }
+
+      .input-group input::placeholder {
+        color: #475569;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Домашка 5 — Функции</h1>
+
+      <!-- Задание 1 -->
+      <div class="task">
+        <span class="task-number">Задание 1</span>
+        <h2 class="task-title">Меньшее из двух чисел</h2>
+        <p class="task-description">
+          Напишите функцию, которая возвращает меньшее из двух чисел. Если числа
+          равны — возвращает это значение.
+        </p>
+        <div class="code-block">
+          <pre><span class="comment">// Задание 1: Меньшее из двух чисел</span>
+<span class="keyword">function</span> <span class="function">min</span>(a, b) {
+    <span class="keyword">if</span> (a <= b) {
+        <span class="keyword">return</span> a;
+    } <span class="keyword">else</span> {
+        <span class="keyword">return</span> b;
+    }
+}</pre>
+        </div>
+        <div class="input-group">
+          <label>a:</label>
+          <input type="number" id="t1a" value="8" />
+          <label>b:</label>
+          <input type="number" id="t1b" value="4" />
+        </div>
+        <button class="btn" onclick="runTask1()">Запустить задание 1</button>
+        <div class="result" id="result1" style="display: none">
+          <div class="result-label">Результат</div>
+          <div class="result-output" id="output1"></div>
+        </div>
+      </div>
+
+      <!-- Задание 2 -->
+      <div class="task">
+        <span class="task-number">Задание 2</span>
+        <h2 class="task-title">Чётность числа</h2>
+        <p class="task-description">
+          Напишите функцию, которая принимает число и возвращает строку «Число
+          четное» или «Число нечетное».
+        </p>
+        <div class="code-block">
+          <pre><span class="comment">// Задание 2: Чётность числа</span>
+<span class="keyword">function</span> <span class="function">checkEvenOdd</span>(n) {
+    <span class="keyword">if</span> (n % <span class="number">2</span> === <span class="number">0</span>) {
+        <span class="keyword">return</span> <span class="string">"Число четное"</span>;
+    } <span class="keyword">else</span> {
+        <span class="keyword">return</span> <span class="string">"Число нечетное"</span>;
+    }
+}</pre>
+        </div>
+        <div class="input-group">
+          <label>Число:</label>
+          <input type="number" id="t2n" value="7" />
+        </div>
+        <button class="btn" onclick="runTask2()">Запустить задание 2</button>
+        <div class="result" id="result2" style="display: none">
+          <div class="result-label">Результат</div>
+          <div class="result-output" id="output2"></div>
+        </div>
+      </div>
+
+      <!-- Задание 3 -->
+      <div class="task">
+        <span class="task-number">Задание 3</span>
+        <h2 class="task-title">Квадрат числа</h2>
+        <p class="task-description">
+          Напишите функцию, которая выводит в консоль квадрат числа, и функцию,
+          которая возвращает квадрат числа.
+        </p>
+        <div class="code-block">
+          <pre><span class="comment">// Задание 3: Квадрат числа</span>
+<span class="keyword">function</span> <span class="function">printSquare</span>(n) {
+    console.<span class="function">log</span>(n * n);
+}
+
+<span class="keyword">function</span> <span class="function">getSquare</span>(n) {
+    <span class="keyword">return</span> n * n;
+}</pre>
+        </div>
+        <div class="input-group">
+          <label>Число:</label>
+          <input type="number" id="t3n" value="5" />
+        </div>
+        <button class="btn" onclick="runTask3()">Запустить задание 3</button>
+        <div class="result" id="result3" style="display: none">
+          <div class="result-label">Результат</div>
+          <div class="result-output" id="output3"></div>
+        </div>
+      </div>
+
+      <!-- Задание 4 -->
+      <div class="task">
+        <span class="task-number">Задание 4</span>
+        <h2 class="task-title">Приветствие по возрасту</h2>
+        <p class="task-description">
+          Создайте функцию, которая спрашивает возраст и выводит соответствующее
+          приветствие.
+        </p>
+        <div class="code-block">
+          <pre><span class="comment">// Задание 4: Приветствие по возрасту</span>
+<span class="keyword">function</span> <span class="function">greetByAge</span>() {
+    <span class="keyword">let</span> age = <span class="function">parseInt</span>(<span class="function">prompt</span>(<span class="string">"Сколько вам лет?"</span>));
+
+    <span class="keyword">if</span> (age < <span class="number">0</span>) {
+        <span class="function">alert</span>(<span class="string">"Вы ввели неправильное значение"</span>);
+    } <span class="keyword">else if</span> (age >= <span class="number">0</span> && age <= <span class="number">12</span>) {
+        <span class="function">alert</span>(<span class="string">"Привет, друг!"</span>);
+    } <span class="keyword">else</span> {
+        <span class="function">alert</span>(<span class="string">"Добро пожаловать!"</span>);
+    }
+}</pre>
+        </div>
+        <button class="btn" onclick="runTask4()">Запустить задание 4</button>
+        <div class="result" id="result4" style="display: none">
+          <div class="result-label">Результат</div>
+          <div class="result-output" id="output4">
+            <span class="warn">Введите возраст в поле ниже (без prompt):</span>
+          </div>
+        </div>
+        <div class="input-group" style="margin-top: 10px">
+          <label>Возраст:</label>
+          <input type="number" id="t4age" value="10" />
+          <button class="btn" onclick="runTask4Alt()" style="margin-top: 0">
+            Проверить
+          </button>
+        </div>
+        <div
+          class="result"
+          id="result4alt"
+          style="display: none; margin-top: 10px"
+        >
+          <div class="result-label">Результат</div>
+          <div class="result-output" id="output4alt"></div>
+        </div>
+      </div>
+
+      <!-- Задание 5 -->
+      <div class="task">
+        <span class="task-number">Задание 5</span>
+        <h2 class="task-title">Проверка чисел и произведение</h2>
+        <p class="task-description">
+          Напишите функцию, которая проверяет, являются ли оба параметра
+          числами, и возвращает их произведение.
+        </p>
+        <div class="code-block">
+          <pre><span class="comment">// Задание 5: Проверка чисел и произведение</span>
+<span class="keyword">function</span> <span class="function">multiplyNumbers</span>(a, b) {
+    <span class="keyword">if</span> (<span class="function">isNaN</span>(a) || <span class="function">isNaN</span>(b)) {
+        <span class="keyword">return</span> <span class="string">"Одно или оба значения не являются числом"</span>;
+    }
+    <span class="keyword">return</span> a * b;
+}</pre>
+        </div>
+        <div class="input-group">
+          <label>a:</label>
+          <input type="text" id="t5a" value="6" />
+          <label>b:</label>
+          <input type="text" id="t5b" value="8" />
+        </div>
+        <button class="btn" onclick="runTask5()">Запустить задание 5</button>
+        <div class="result" id="result5" style="display: none">
+          <div class="result-label">Результат</div>
+          <div class="result-output" id="output5"></div>
+        </div>
+      </div>
+
+      <!-- Задание 6 -->
+      <div class="task">
+        <span class="task-number">Задание 6</span>
+        <h2 class="task-title">Куб числа</h2>
+        <p class="task-description">
+          Напишите функцию, которая запрашивает число, проверяет его и
+          возвращает строку с кубом числа.
+        </p>
+        <div class="code-block">
+          <pre><span class="comment">// Задание 6: Куб числа</span>
+<span class="keyword">function</span> <span class="function">cubeNumber</span>() {
+    <span class="keyword">let</span> n = <span class="function">prompt</span>(<span class="string">"Введите число"</span>);
+    <span class="keyword">if</span> (<span class="function">isNaN</span>(n) || n === <span class="string">""</span> || n === <span class="keyword">null</span>) {
+        <span class="keyword">return</span> <span class="string">"Переданный параметр не является числом"</span>;
+    }
+    <span class="keyword">return</span> n + <span class="string">" в кубе равняется "</span> + (n ** <span class="number">3</span>);
+}</pre>
+        </div>
+        <div class="input-group">
+          <label>Число (0–10):</label>
+          <input type="number" id="t6n" value="3" min="0" max="10" />
+        </div>
+        <button class="btn" onclick="runTask6()">Запустить задание 6</button>
+        <div class="result" id="result6" style="display: none">
+          <div class="result-label">Результат</div>
+          <div class="result-output" id="output6"></div>
+        </div>
+      </div>
+
+      <!-- Задание 7 -->
+      <div class="task">
+        <span class="task-number">Задание 7</span>
+        <h2 class="task-title">Площадь и периметр круга</h2>
+        <p class="task-description">
+          Создайте два объекта circle1 и circle2 с методами getArea (площадь) и
+          getPerimeter (периметр окружности).
+        </p>
+        <div class="code-block">
+          <pre><span class="comment">// Задание 7: Площадь и периметр круга</span>
+<span class="keyword">const</span> circle1 = {
+    radius: <span class="number">5</span>,
+    <span class="function">getArea</span>: <span class="keyword">function</span>() {
+        <span class="keyword">return</span> Math.PI * <span class="keyword">this</span>.radius ** <span class="number">2</span>;
+    },
+    <span class="function">getPerimeter</span>: <span class="keyword">function</span>() {
+        <span class="keyword">return</span> <span class="number">2</span> * Math.PI * <span class="keyword">this</span>.radius;
+    }
+};
+
+<span class="keyword">const</span> circle2 = {
+    radius: <span class="number">10</span>,
+    <span class="function">getArea</span>: <span class="keyword">function</span>() {
+        <span class="keyword">return</span> Math.PI * <span class="keyword">this</span>.radius ** <span class="number">2</span>;
+    },
+    <span class="function">getPerimeter</span>: <span class="keyword">function</span>() {
+        <span class="keyword">return</span> <span class="number">2</span> * Math.PI * <span class="keyword">this</span>.radius;
+    }
+};</pre>
+        </div>
+        <div class="input-group">
+          <label>Радиус circle1:</label>
+          <input type="number" id="t7r1" value="5" step="0.1" />
+          <label>Радиус circle2:</label>
+          <input type="number" id="t7r2" value="10" step="0.1" />
+        </div>
+        <button class="btn" onclick="runTask7()">Запустить задание 7</button>
+        <div class="result" id="result7" style="display: none">
+          <div class="result-label">Результат</div>
+          <div class="result-output" id="output7"></div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // ==Задание 1 ==
+      function min(a, b) {
+        if (a <= b) {
+          return a;
+        } else {
+          return b;
+        }
+      }
+
+      function runTask1() {
+        let a = Number(document.getElementById("t1a").value);
+        let b = Number(document.getElementById("t1b").value);
+        let result = min(a, b);
+        document.getElementById("result1").style.display = "block";
+        document.getElementById("output1").innerHTML =
+          "min(" + a + ", " + b + ") = " + result;
+      }
+
+      // == Задание 2 ==
+      function checkEvenOdd(n) {
+        if (n % 2 === 0) {
+          return "Число четное";
+        } else {
+          return "Число нечетное";
+        }
+      }
+
+      function runTask2() {
+        let n = Number(document.getElementById("t2n").value);
+        let result = checkEvenOdd(n);
+        document.getElementById("result2").style.display = "block";
+        document.getElementById("output2").innerHTML = result;
+      }
+
+      // == Задание 3 ==
+      function printSquare(n) {
+        console.log(n * n);
+        return n * n;
+      }
+
+      function getSquare(n) {
+        return n * n;
+      }
+
+      function runTask3() {
+        let n = Number(document.getElementById("t3n").value);
+        let sq = getSquare(n);
+        printSquare(n);
+        document.getElementById("result3").style.display = "block";
+        document.getElementById("output3").innerHTML =
+          "printSquare(" +
+          n +
+          ") вывела в консоль: " +
+          sq +
+          "<br>" +
+          "getSquare(" +
+          n +
+          ") вернула: " +
+          sq;
+      }
+
+      // === Задание 4 ===
+      function greetByAge() {
+        let age = parseInt(prompt("Сколько вам лет?"));
+        if (age < 0) {
+          alert("Вы ввели неправильное значение");
+        } else if (age >= 0 && age <= 12) {
+          alert("Привет, друг!");
+        } else {
+          alert("Добро пожаловать!");
+        }
+      }
+
+      function runTask4() {
+        document.getElementById("result4").style.display = "block";
+        greetByAge();
+      }
+
+      function runTask4Alt() {
+        let age = Number(document.getElementById("t4age").value);
+        let result;
+        if (age < 0) {
+          result = "Вы ввели неправильное значение";
+        } else if (age >= 0 && age <= 12) {
+          result = "Привет, друг!";
+        } else {
+          result = "Добро пожаловать!";
+        }
+        document.getElementById("result4alt").style.display = "block";
+        document.getElementById("output4alt").innerHTML = result;
+      }
+
+      // === Задание 5 ===
+      function multiplyNumbers(a, b) {
+        if (isNaN(a) || isNaN(b)) {
+          return "Одно или оба значения не являются числом";
+        }
+        return a * b;
+      }
+
+      function runTask5() {
+        let a = document.getElementById("t5a").value;
+        let b = document.getElementById("t5b").value;
+        let numA = Number(a);
+        let numB = Number(b);
+        let result = multiplyNumbers(numA, numB);
+        document.getElementById("result5").style.display = "block";
+        if (typeof result === "string") {
+          document.getElementById("output5").innerHTML =
+            '<span class="warn">' + result + "</span>";
+        } else {
+          document.getElementById("output5").innerHTML =
+            a + " × " + b + " = " + result;
+        }
+      }
+
+      // === Задание 6 ==
+      function cubeNumberInput(n) {
+        if (isNaN(n) || n === "" || n === null) {
+          return "Переданный параметр не является числом";
+        }
+        return n + " в кубе равняется " + n ** 3;
+      }
+
+      function runTask6() {
+        let n = document.getElementById("t6n").value;
+        let result = cubeNumberInput(n);
+        document.getElementById("result6").style.display = "block";
+        document.getElementById("output6").innerHTML = result;
+      }
+
+      // === Задание 7 ==
+      function runTask7() {
+        let r1 = Number(document.getElementById("t7r1").value);
+        let r2 = Number(document.getElementById("t7r2").value);
+
+        const circle1 = {
+          radius: r1,
+          getArea: function () {
+            return Math.PI * this.radius ** 2;
+          },
+          getPerimeter: function () {
+            return 2 * Math.PI * this.radius;
+          },
+        };
+
+        const circle2 = {
+          radius: r2,
+          getArea: function () {
+            return Math.PI * this.radius ** 2;
+          },
+          getPerimeter: function () {
+            return 2 * Math.PI * this.radius;
+          },
+        };
+
+        let output = [];
+        output.push("circle1 (r = " + r1 + "):");
+        output.push("  Площадь: " + circle1.getArea().toFixed(2));
+        output.push("  Периметр: " + circle1.getPerimeter().toFixed(2));
+        output.push("");
+        output.push("circle2 (r = " + r2 + "):");
+        output.push("  Площадь: " + circle2.getArea().toFixed(2));
+        output.push("  Периметр: " + circle2.getPerimeter().toFixed(2));
+
+        document.getElementById("result7").style.display = "block";
+        document.getElementById("output7").innerHTML = output.join("<br>");
+      }
+    </script>
+  </body>
+</html>
