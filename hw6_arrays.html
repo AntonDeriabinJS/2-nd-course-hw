@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Домашка — Массивы</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #0f172a;
+        color: #e2e8f0;
+        min-height: 100vh;
+        padding: 40px 20px;
+      }
+
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+      }
+
+      h1 {
+        text-align: center;
+        color: #38bdf8;
+        margin-bottom: 40px;
+        font-size: 2.2rem;
+        text-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
+      }
+
+      .task {
+        background-color: #1e293b;
+        border-radius: 16px;
+        padding: 28px 32px;
+        margin-bottom: 24px;
+        border-left: 4px solid #38bdf8;
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+
+      .task:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+      }
+
+      .task-number {
+        display: inline-block;
+        background-color: #38bdf8;
+        color: #0f172a;
+        font-weight: bold;
+        font-size: 0.85rem;
+        padding: 4px 14px;
+        border-radius: 20px;
+        margin-bottom: 12px;
+      }
+
+      .task-title {
+        font-size: 1.3rem;
+        color: #f1f5f9;
+        margin-bottom: 12px;
+      }
+
+      .task-description {
+        color: #94a3b8;
+        margin-bottom: 16px;
+        line-height: 1.6;
+      }
+
+      .code-block {
+        background-color: #0f172a;
+        border-radius: 10px;
+        padding: 20px 24px;
+        overflow-x: auto;
+        border: 1px solid #334155;
+      }
+
+      .code-block pre {
+        margin: 0;
+        font-family: "Consolas", "Monaco", "Courier New", monospace;
+        font-size: 0.95rem;
+        line-height: 1.7;
+        color: #e2e8f0;
+      }
+
+      .code-block .comment {
+        color: #64748b;
+      }
+
+      .code-block .keyword {
+        color: #c084fc;
+      }
+
+      .code-block .string {
+        color: #4ade80;
+      }
+
+      .code-block .function {
+        color: #60a5fa;
+      }
+
+      .code-block .number {
+        color: #fbbf24;
+      }
+
+      .result {
+        margin-top: 16px;
+        padding: 14px 18px;
+        background-color: #0f172a;
+        border-radius: 10px;
+        border: 1px solid #334155;
+      }
+
+      .result-label {
+        font-size: 0.8rem;
+        color: #38bdf8;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 8px;
+      }
+
+      .result-output {
+        font-family: "Consolas", "Monaco", "Courier New", monospace;
+        color: #4ade80;
+        font-size: 0.95rem;
+        line-height: 1.6;
+      }
+
+      .result-output .warn {
+        color: #fbbf24;
+      }
+
+      .result-output .error {
+        color: #f87171;
+      }
+
+      .btn {
+        display: inline-block;
+        margin-top: 14px;
+        padding: 10px 24px;
+        background-color: #38bdf8;
+        color: #0f172a;
+        border: none;
+        border-radius: 8px;
+        font-size: 0.95rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition:
+          background-color 0.2s ease,
+          transform 0.15s ease;
+      }
+
+      .btn:hover {
+        background-color: #7dd3fc;
+        transform: scale(1.03);
+      }
+
+      .btn:active {
+        transform: scale(0.98);
+      }
+
+      .input-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 12px;
+        align-items: center;
+      }
+
+      .input-group label {
+        color: #94a3b8;
+        font-size: 0.9rem;
+      }
+
+      .input-group input {
+        background-color: #0f172a;
+        border: 1px solid #334155;
+        border-radius: 6px;
+        padding: 8px 12px;
+        color: #e2e8f0;
+        font-family: "Consolas", "Monaco", "Courier New", monospace;
+        font-size: 0.9rem;
+        outline: none;
+        transition: border-color 0.2s ease;
+      }
+
+      .input-group input:focus {
+        border-color: #38bdf8;
+      }
+
+      .input-group input::placeholder {
+        color: #475569;
+      }
+
+      .console-log {
+        color: #fbbf24;
+      }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Домашка — Массивы</h1>
+
+        <!-- Задание 1 -->
+        <div class="task">
+            <span class="task-number">Задание 1</span>
+            <h2 class="task-title">Цикл до 10</h2>
+            <p class="task-description">
+                Дан массив: [1, 5, 4, 10, 0, 3]. Создайте цикл, который выводит элементы до тех пор, пока не встретит значение 10. После вывода 10 цикл прекращает работу.
+            </p>
+            <div class="code-block">
+<pre><span class="comment">// Задание 1: Цикл до 10</span>
+<span class="keyword">const</span> arr1 = [<span class="number">1</span>, <span class="number">5</span>, <span class="number">4</span>, <span class="number">10</span>, <span class="number">0</span>, <span class="number">3</span>];
+<span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i < arr1.length; i++) {
+    <span class="keyword">if</span> (arr1[i] === <span class="number">10</span>) {
+        console.<span class="function">log</span>(arr1[i]);
+        <span class="keyword">break</span>;
+    }
+    console.<span class="function">log</span>(arr1[i]);
+}</pre>
+            </div>
+            <button class="btn" onclick="runTask1()">Запустить задание 1</button>
+            <div class="result" id="result1" style="display:none">
+                <div class="result-label">Результат (консоль)</div>
+                <div class="result-output" id="output1"></div>
+            </div>
+        </div>
+
+        <!-- Задание 2 -->
+        <div class="task">
+            <span class="task-number">Задание 2</span>
+            <h2 class="task-title">Индекс значения 4</h2>
+            <p class="task-description">
+                Дан массив: [1, 5, 4, 10, 0, 3]. Найдите индекс значения 4 в этом массиве.
+            </p>
+            <div class="code-block">
+<pre><span class="comment">// Задание 2: Индекс значения 4</span>
+<span class="keyword">const</span> arr2 = [<span class="number">1</span>, <span class="number">5</span>, <span class="number">4</span>, <span class="number">10</span>, <span class="number">0</span>, <span class="number">3</span>];
+<span class="keyword">let</span> index = <span class="number">-1</span>;
+<span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i < arr2.length; i++) {
+    <span class="keyword">if</span> (arr2[i] === <span class="number">4</span>) {
+        index = i;
+        <span class="keyword">break</span>;
+    }
+}
+console.<span class="function">log</span>(index);</pre>
+            </div>
+            <button class="btn" onclick="runTask2()">Запустить задание 2</button>
+            <div class="result" id="result2" style="display:none">
+                <div class="result-label">Результат</div>
+                <div class="result-output" id="output2"></div>
+            </div>
+        </div>
+
+        <!-- Задание 3 -->
+        <div class="task">
+            <span class="task-number">Задание 3</span>
+            <h2 class="task-title">join через пробел</h2>
+            <p class="task-description">
+                Дан массив: [1, 3, 5, 10, 20]. С помощью метода join выведите элементы через пробел.
+            </p>
+            <div class="code-block">
+<pre><span class="comment">// Задание 3: join через пробел</span>
+<span class="keyword">const</span> arr3 = [<span class="number">1</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">10</span>, <span class="number">20</span>];
+<span class="keyword">const</span> joined = arr3.<span class="function">join</span>(<span class="string">" "</span>);
+console.<span class="function">log</span>(joined);</pre>
+            </div>
+            <button class="btn" onclick="runTask3()">Запустить задание 3</button>
+            <div class="result" id="result3" style="display:none">
+                <div class="result-label">Результат</div>
+                <div class="result-output" id="output3"></div>
+            </div>
+        </div>
+
+        <!-- Задание 4 -->
+        <div class="task">
+            <span class="task-number">Задание 4</span>
+            <h2 class="task-title">Многомерный массив</h2>
+            <p class="task-description">
+                С помощью вложенных циклов создайте многомерный массив вида: [[1, 1, 1], [1, 1, 1], [1, 1, 1]].
+            </p>
+            <div class="code-block">
+<pre><span class="comment">// Задание 4: Многомерный массив</span>
+<span class="keyword">const</span> multi = [];
+<span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i < <span class="number">3</span>; i++) {
+    <span class="keyword">const</span> row = [];
+    <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j < <span class="number">3</span>; j++) {
+        row.<span class="function">push</span>(<span class="number">1</span>);
+    }
+    multi.<span class="function">push</span>(row);
+}
+console.<span class="function">log</span>(multi);</pre>
+            </div>
+            <button class="btn" onclick="runTask4()">Запустить задание 4</button>
+            <div class="result" id="result4" style="display:none">
+                <div class="result-label">Результат</div>
+                <div class="result-output" id="output4"></div>
+            </div>
+        </div>
+
+        <!-- Задание 5 -->
+        <div class="task">
+            <span class="task-number">Задание 5</span>
+            <h2 class="task-title">Добавить в конец</h2>
+            <p class="task-description">
+                Дан массив: [1, 1, 1]. Добавьте в конец значения 2, 2, 2.
+            </p>
+            <div class="code-block">
+<pre><span class="comment">// Задание 5: Добавить в конец</span>
+<span class="keyword">const</span> arr5 = [<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>];
+arr5.<span class="function">push</span>(<span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>);
+console.<span class="function">log</span>(arr5);</pre>
+            </div>
+            <button class="btn" onclick="runTask5()">Запустить задание 5</button>
+            <div class="result" id="result5" style="display:none">
+                <div class="result-label">Результат</div>
+                <div class="result-output" id="output5"></div>
+            </div>
+        </div>
+
+        <!-- Задание 6 -->
+        <div class="task">
+            <span class="task-number">Задание 6</span>
+            <h2 class="task-title">Сортировка и удаление 'a'</h2>
+            <p class="task-description">
+                Дан массив: [9, 8, 7, 'a', 6, 5]. Отсортируйте и удалите букву 'a'.
+            </p>
+            <div class="code-block">
+<pre><span class="comment">// Задание 6: Сортировка и удаление 'a'</span>
+<span class="keyword">const</span> arr6 = [<span class="number">9</span>, <span class="number">8</span>, <span class="number">7</span>, <span class="string">'a'</span>, <span class="number">6</span>, <span class="number">5</span>];
+arr6.<span class="function">sort</span>();
+<span class="keyword">const</span> filtered = arr6.<span class="function">filter</span>(item => <span class="keyword">typeof</span> item === <span class="string">'number'</span>);
+console.<span class="function">log</span>(filtered);</pre>
+            </div>
+            <button class="btn" onclick="runTask6()">Запустить задание 6</button>
+            <div class="result" id="result6" style="display:none">
+                <div class="result-label">Результат</div>
+                <div class="result-output" id="output6"></div>
+            </div>
+        </div>
+
+        <!-- Задание 7 -->
+        <div class="task">
+            <span class="task-number">Задание 7</span>
+            <h2 class="task-title">Угадай число</h2>
+            <p class="task-description">
+                Дан массив: [9, 8, 7, 6, 5]. Попросите пользователя угадать число. Если есть в массиве — «Угадал», иначе — «Не угадал».
+            </p>
+            <div class="code-block">
+<pre><span class="comment">// Задание 7: Угадай число</span>
+<span class="keyword">const</span> arr7 = [<span class="number">9</span>, <span class="number">8</span>, <span class="number">7</span>, <span class="number">6</span>, <span class="number">5</span>];
+<span class="keyword">let</span> guess = <span class="function">prompt</span>(<span class="string">"Угадайте число"</span>);
+<span class="keyword">if</span> (arr7.<span class="function">includes</span>(<span class="function">Number</span>(guess))) {
+    <span class="function">alert</span>(<span class="string">"Угадал"</span>);
+} <span class="keyword">else</span> {
+    <span class="function">alert</span>(<span class="string">"Не угадал"</span>);
+}</pre>
+            </div>
+            <div class="input-group">
+                <label>Ваше число:</label>
+                <input type="number" id="t7guess" value="7" />
+            </div>
+            <button class="btn" onclick="runTask7()">Запустить задание 7</button>
+            <div class="result" id="result7" style="display:none">
+                <div class="result-label">Результат</div>
+                <div class="result-output" id="output7"></div>
+            </div>
+        </div>
+
+        <!-- Задание 8 -->
+        <div class="task">
+            <span class="task-number">Задание 8</span>
+            <h2 class="task-title">Перевёрнутая строка</h2>
+            <p class="task-description">
+                Дана строка: 'abcdef'. Выведите 'fedcba'.
+            </p>
+            <div class="code-block">
+<pre><span class="comment">// Задание 8: Перевёрнутая строка</span>
+<span class="keyword">const</span> str = <span class="string">'abcdef'</span>;
+<span class="keyword">const</span> reversed = str.<span class="function">split</span>(<span class="string">''</span>).<span class="function">reverse</span>().<span class="function">join</span>(<span class="string">''</span>);
+console.<span class="function">log</span>(reversed);</pre>
+            </div>
+            <button class="btn" onclick="runTask8()">Запустить задание 8</button>
+            <div class="result" id="result8" style="display:none">
+                <div class="result-label">Результат</div>
+                <div class="result-output" id="output8"></div>
+            </div>
+        </div>
+
+        <!-- Задание 9 -->
+        <div class="task">
+            <span class="task-number">Задание 9</span>
+            <h2 class="task-title">Объединение массивов</h2>
+            <p class="task-description">
+                Дан массив: [[1, 2, 3], [4, 5, 6]]. Выведите: [1, 2, 3, 4, 5, 6].
+            </p>
+            <div class="code-block">
+<pre><span class="comment">// Задание 9: Объединение массивов</span>
+<span class="keyword">const</span> arr9 = [[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]];
+<span class="keyword">const</span> flat = [...arr9[<span class="number">0</span>], ...arr9[<span class="number">1</span>]];
+console.<span class="function">log</span>(flat);</pre>
+            </div>
+            <button class="btn" onclick="runTask9()">Запустить задание 9</button>
+            <div class="result" id="result9" style="display:none">
+                <div class="result-label">Результат</div>
+                <div class="result-output" id="output9"></div>
+            </div>
+        </div>
+
+        <!-- Задание 10 -->
+        <div class="task">
+            <span class="task-number">Задание 10</span>
+            <h2 class="task-title">Сумма текущего и следующего</h2>
+            <p class="task-description">
+                Создайте массив с произвольными числами (1–10). Переберите циклом for и выведите сумму текущего и следующего элементов.
+            </p>
+            <div class="code-block">
+<pre><span class="comment">// Задание 10: Сумма текущего и следующего</span>
+<span class="keyword">const</span> arr10 = [<span class="number">3</span>, <span class="number">7</span>, <span class="number">2</span>, <span class="number">9</span>, <span class="number">1</span>, <span class="number">5</span>, <span class="number">8</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">10</span>];
+<span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i < arr10.length - <span class="number">1</span>; i++) {
+    console.<span class="function">log</span>(arr10[i] + arr10[i + <span class="number">1</span>]);
+}</pre>
+            </div>
+            <button class="btn" onclick="runTask10()">Запустить задание 10</button>
+            <div class="result" id="result10" style="display:none">
+                <div class="result-label">Результат (консоль)</div>
+                <div class="result-output" id="output10"></div>
+            </div>
+        </div>
+
+        <!-- Задание 11 -->
+        <div class="task">
+            <span class="task-number">Задание 11</span>
+            <h2 class="task-title">Квадраты чисел</h2>
+            <p class="task-description">
+                Функция, принимающая массив целых чисел и возвращающая массив квадратов.
+            </p>
+            <div class="code-block">
+<pre><span class="comment">// Задание 11: Квадраты чисел</span>
+<span class="keyword">function</span> <span class="function">getSquares</span>(arr) {
+    <span class="keyword">return</span> arr.<span class="function">map</span>(n => n * n);
+}</pre>
+            </div>
+            <div class="input-group">
+                <label>Массив (через запятую):</label>
+                <input type="text" id="t11arr" value="2, 4, 6, 8" />
+            </div>
+            <button class="btn" onclick="runTask11()">Запустить задание 11</button>
+            <div class="result" id="result11" style="display:none">
+                <div class="result-label">Результат</div>
+                <div class="result-output" id="output11"></div>
+            </div>
+        </div>
+
+        <!-- Задание 12 -->
+        <div class="task">
+            <span class="task-number">Задание 12</span>
+            <h2 class="task-title">Длины слов</h2>
+            <p class="task-description">
+                Функция, принимающая массив строк и возвращающая массив длин слов.
+            </p>
+            <div class="code-block">
+<pre><span class="comment">// Задание 12: Длины слов</span>
+<span class="keyword">function</span> <span class="function">getLengths</span>(arr) {
+    <span class="keyword">return</span> arr.<span class="function">map</span>(s => s.length);
+}</pre>
+            </div>
+            <div class="input-group">
+                <label>Слова (через запятую):</label>
+                <input type="text" id="t12arr" value="apple, banana, cherry" />
+            </div>
+            <button class="btn" onclick="runTask12()">Запустить задание 12</button>
+            <div class="result" id="result12" style="display:none">
+                <div class="result-label">Результат</div>
+                <div class="result-output" id="output12"></div>
+            </div>
+        </div>
+
+        <!-- Задание 13 -->
+        <div class="task">
+            <span class="task-number">Задание 13</span>
+            <h2 class="task-title">Отрицательные значения</h2>
+            <p class="task-description">
+                Функция, принимающая массив целых чисел и возвращающая только отрицательные.
+            </p>
+            <div class="code-block">
+<pre><span class="comment">// Задание 13: Отрицательные значения</span>
+<span class="keyword">function</span> <span class="function">getNegative</span>(arr) {
+    <span class="keyword">return</span> arr.<span class="function">filter</span>(n => n < <span class="number">0</span>);
+}</pre>
+            </div>
+            <div class="input-group">
+                <label>Числа (через запятую):</label>
+                <input type="text" id="t13arr" value="-3, 5, -1, 0, 8, -7" />
+            </div>
+            <button class="btn" onclick="runTask13()">Запустить задание 13</button>
+            <div class="result" id="result13" style="display:none">
+                <div class="result-label">Результат</div>
+                <div class="result-output" id="output13"></div>
+            </div>
+        </div>
+
+        <!-- Задание 14 -->
+        <div class="task">
+            <span class="task-number">Задание 14</span>
+            <h2 class="task-title">Чётные из случайных</h2>
+            <p class="task-description">
+                Создайте массив из 10 случайных значений (0–10). Найдите все чётные и выведите оба массива.
+            </p>
+            <div class="code-block">
+<pre><span class="comment">// Задание 14: Чётные из случайных</span>
+<span class="keyword">const</span> randomArr = [];
+<span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i < <span class="number">10</span>; i++) {
+    randomArr.<span class="function">push</span>(Math.<span class="function">floor</span>(Math.<span class="function">random</span>() * <span class="number">11</span>));
+}
+<span class="keyword">const</span> evenArr = randomArr.<span class="function">filter</span>(n => n % <span class="number">2</span> === <span class="number">0</span>);
+console.<span class="function">log</span>(<span class="string">"Исходный:"</span>, randomArr);
+console.<span class="function">log</span>(<span class="string">"Чётные:"</span>, evenArr);</pre>
+            </div>
+            <button class="btn" onclick="runTask14()">Запустить задание 14</button>
+            <div class="result" id="result14" style="display:none">
+                <div class="result-label">Результат</div>
+                <div class="result-output" id="output14"></div>
+            </div>
+        </div>
+
+        <!-- Задание 15 -->
+        <div class="task">
+            <span class="task-number">Задание 15</span>
+            <h2 class="task-title">Среднее арифметическое</h2>
+            <p class="task-description">
+                Создайте массив из 6 случайных значений (1–10). Найдите среднее арифметическое.
+            </p>
+            <div class="code-block">
+<pre><span class="comment">// Задание 15: Среднее арифметическое</span>
+<span class="keyword">const</span> arr15 = [];
+<span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i < <span class="number">6</span>; i++) {
+    arr15.<span class="function">push</span>(Math.<span class="function">floor</span>(Math.<span class="function">random</span>() * <span class="number">10</span>) + <span class="number">1</span>);
+}
+<span class="keyword">const</span> avg = arr15.<span class="function">reduce</span>((sum, n) => sum + n, <span class="number">0</span>) / arr15.length;
+console.<span class="function">log</span>(arr15);
+console.<span class="function">log</span>(<span class="string">"Среднее:"</span>, avg);</pre>
+            </div>
+            <button class="btn" onclick="runTask15()">Запустить задание 15</button>
+            <div class="result" id="result15" style="display:none">
+                <div class="result-label">Результат</div>
+                <div class="result-output" id="output15"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // === Задание 1 ===
+        function runTask1() {
+            const arr1 = [1, 5, 4, 10, 0, 3];
+            let output = [];
+            for (let i = 0; i < arr1.length; i++) {
+                if (arr1[i] === 10) {
+                    output.push(arr1[i]);
+                    break;
+                }
+                output.push(arr1[i]);
+            }
+            document.getElementById("result1").style.display = "block";
+            document.getElementById("output1").innerHTML = output.join("<br>");
+        }
+
+        // === Задание 2 ===
+        function runTask2() {
+            const arr2 = [1, 5, 4, 10, 0, 3];
+            let index = -1;
+            for (let i = 0; i < arr2.length; i++) {
+                if (arr2[i] === 4) {
+                    index = i;
+                    break;
+                }
+            }
+            document.getElementById("result2").style.display = "block";
+            document.getElementById("output2").innerHTML = "Индекс значения 4: " + index;
+        }
+
+        // === Задание 3 ===
+        function runTask3() {
+            const arr3 = [1, 3, 5, 10, 20];
+            const joined = arr3.join(" ");
+            document.getElementById("result3").style.display = "block";
+            document.getElementById("output3").innerHTML = "Результат join: '" + joined + "'";
+        }
+
+        // === Задание 4 ===
+        function runTask4() {
+            const multi = [];
+            for (let i = 0; i < 3; i++) {
+                const row = [];
+                for (let j = 0; j < 3; j++) {
+                    row.push(1);
+                }
+                multi.push(row);
+            }
+            document.getElementById("result4").style.display = "block";
+            document.getElementById("output4").innerHTML = JSON.stringify(multi);
+        }
+
+        // === Задание 5 ===
+        function runTask5() {
+            const arr5 = [1, 1, 1];
+            arr5.push(2, 2, 2);
+            document.getElementById("result5").style.display = "block";
+            document.getElementById("output5").innerHTML = JSON.stringify(arr5);
+        }
+
+        // === Задание 6 ===
+        function runTask6() {
+            const arr6 = [9, 8, 7, 'a', 6, 5];
+            arr6.sort();
+            const filtered = arr6.filter(item => typeof item === 'number');
+            document.getElementById("result6").style.display = "block";
+            document.getElementById("output6").innerHTML = "Отсортированный: " + JSON.stringify(arr6) + "<br>Без 'a': " + JSON.stringify(filtered);
+        }
+
+        // === Задание 7 ===
+        function runTask7() {
+            const arr7 = [9, 8, 7, 6, 5];
+            let guess = Number(document.getElementById("t7guess").value);
+            let result;
+            if (arr7.includes(guess)) {
+                result = "Угадал";
+            } else {
+                result = "Не угадал";
+            }
+            document.getElementById("result7").style.display = "block";
+            document.getElementById("output7").innerHTML = result;
+        }
+
+        // === Задание 8 ===
+        function runTask8() {
+            const str = 'abcdef';
+            const reversed = str.split('').reverse().join('');
+            document.getElementById("result8").style.display = "block";
+            document.getElementById("output8").innerHTML = "'" + str + "' → '" + reversed + "'";
+        }
+
+        // === Задание 9 ===
+        function runTask9() {
+            const arr9 = [[1, 2, 3], [4, 5, 6]];
+            const flat = [...arr9[0], ...arr9[1]];
+            document.getElementById("result9").style.display = "block";
+            document.getElementById("output9").innerHTML = JSON.stringify(arr9) + " → " + JSON.stringify(flat);
+        }
+
+        // === Задание 10 ===
+        function runTask10() {
+            const arr10 = [3, 7, 2, 9, 1, 5, 8, 4, 6, 10];
+            let output = [];
+            for (let i = 0; i < arr10.length - 1; i++) {
+                output.push(arr10[i] + " + " + arr10[i + 1] + " = " + (arr10[i] + arr10[i + 1]));
+            }
+            document.getElementById("result10").style.display = "block";
+            document.getElementById("output10").innerHTML = output.join("<br>");
+        }
+
+        // === Задание 11 ===
+        function getSquares(arr) {
+            return arr.map(n => n * n);
+        }
+
+        function runTask11() {
+            let input = document.getElementById("t11arr").value;
+            let arr = input.split(',').map(s => Number(s.trim()));
+            let result = getSquares(arr);
+            document.getElementById("result11").style.display = "block";
+            document.getElementById("output11").innerHTML = "Вход: [" + arr.join(", ") + "]<br>Квадраты: [" + result.join(", ") + "]";
+        }
+
+        // === Задание 12 ===
+        function getLengths(arr) {
+            return arr.map(s => s.length);
+        }
+
+        function runTask12() {
+            let input = document.getElementById("t12arr").value;
+            let arr = input.split(',').map(s => s.trim());
+            let result = getLengths(arr);
+            document.getElementById("result12").style.display = "block";
+            document.getElementById("output12").innerHTML = "Вход: [" + arr.join(", ") + "]<br>Длины: [" + result.join(", ") + "]";
+        }
+
+        // === Задание 13 ===
+        function getNegative(arr) {
+            return arr.filter(n => n < 0);
+        }
+
+        function runTask13() {
+            let input = document.getElementById("t13arr").value;
+            let arr = input.split(',').map(s => Number(s.trim()));
+            let result = getNegative(arr);
+            document.getElementById("result13").style.display = "block";
+            document.getElementById("output13").innerHTML = "Вход: [" + arr.join(", ") + "]<br>Отрицательные: [" + result.join(", ") + "]";
+        }
+
+        // === Задание 14 ===
+        function runTask14() {
+            const randomArr = [];
+            for (let i = 0; i < 10; i++) {
+                randomArr.push(Math.floor(Math.random() * 11));
+            }
+            const evenArr = randomArr.filter(n => n % 2 === 0);
+            document.getElementById("result14").style.display = "block";
+            document.getElementById("output14").innerHTML = 
+                "Исходный: [" + randomArr.join(", ") + "]<br>Чётные: [" + evenArr.join(", ") + "]";
+        }
+
+        // === Задание 15 ===
+        function runTask15() {
+            const arr15 = [];
+            for (let i = 0; i < 6; i++) {
+                arr15.push(Math.floor(Math.random() * 10) + 1);
+            }
+            const avg = arr15.reduce((sum, n) => sum + n, 0) / arr15.length;
+            document.getElementById("result15").style.display = "block";
+            document.getElementById("output15").innerHTML = 
+                "Массив: [" + arr15.join(", ") + "]<br>Среднее: " + avg.toFixed(2);
+        }
+    </script>
+</body>
+</html>
