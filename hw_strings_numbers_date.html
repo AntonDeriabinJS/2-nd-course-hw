@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Домашка — Встроенные объекты</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #0f172a;
+        color: #e2e8f0;
+        min-height: 100vh;
+        padding: 40px 20px;
+      }
+
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+      }
+
+      h1 {
+        text-align: center;
+        color: #38bdf8;
+        margin-bottom: 40px;
+        font-size: 2.2rem;
+        text-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
+      }
+
+      .task {
+        background-color: #1e293b;
+        border-radius: 16px;
+        padding: 28px 32px;
+        margin-bottom: 24px;
+        border-left: 4px solid #38bdf8;
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+
+      .task:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+      }
+
+      .task-number {
+        display: inline-block;
+        background-color: #38bdf8;
+        color: #0f172a;
+        font-weight: bold;
+        font-size: 0.85rem;
+        padding: 4px 14px;
+        border-radius: 20px;
+        margin-bottom: 12px;
+      }
+
+      .task-title {
+        font-size: 1.3rem;
+        color: #f1f5f9;
+        margin-bottom: 12px;
+      }
+
+      .task-description {
+        color: #94a3b8;
+        margin-bottom: 16px;
+        line-height: 1.6;
+      }
+
+      .code-block {
+        background-color: #0f172a;
+        border-radius: 10px;
+        padding: 20px 24px;
+        overflow-x: auto;
+        border: 1px solid #334155;
+      }
+
+      .code-block pre {
+        margin: 0;
+        font-family: "Consolas", "Monaco", "Courier New", monospace;
+        font-size: 0.95rem;
+        line-height: 1.7;
+        color: #e2e8f0;
+      }
+
+      .code-block .comment {
+        color: #64748b;
+      }
+
+      .code-block .keyword {
+        color: #c084fc;
+      }
+
+      .code-block .string {
+        color: #4ade80;
+      }
+
+      .code-block .function {
+        color: #60a5fa;
+      }
+
+      .code-block .number {
+        color: #fbbf24;
+      }
+
+      .result {
+        margin-top: 16px;
+        padding: 14px 18px;
+        background-color: #0f172a;
+        border-radius: 10px;
+        border: 1px solid #334155;
+      }
+
+      .result-label {
+        font-size: 0.8rem;
+        color: #38bdf8;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 8px;
+      }
+
+      .result-output {
+        font-family: "Consolas", "Monaco", "Courier New", monospace;
+        color: #4ade80;
+        font-size: 0.95rem;
+        line-height: 1.6;
+      }
+
+      .result-output .warn {
+        color: #fbbf24;
+      }
+
+      .result-output .error {
+        color: #f87171;
+      }
+
+      .btn {
+        display: inline-block;
+        margin-top: 14px;
+        padding: 10px 24px;
+        background-color: #38bdf8;
+        color: #0f172a;
+        border: none;
+        border-radius: 8px;
+        font-size: 0.95rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition:
+          background-color 0.2s ease,
+          transform 0.15s ease;
+      }
+
+      .btn:hover {
+        background-color: #7dd3fc;
+        transform: scale(1.03);
+      }
+
+      .btn:active {
+        transform: scale(0.98);
+      }
+
+      .input-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 12px;
+        align-items: center;
+      }
+
+      .input-group label {
+        color: #94a3b8;
+        font-size: 0.9rem;
+      }
+
+      .input-group input {
+        background-color: #0f172a;
+        border: 1px solid #334155;
+        border-radius: 6px;
+        padding: 8px 12px;
+        color: #e2e8f0;
+        font-family: "Consolas", "Monaco", "Courier New", monospace;
+        font-size: 0.9rem;
+        outline: none;
+        transition: border-color 0.2s ease;
+      }
+
+      .input-group input:focus {
+        border-color: #38bdf8;
+      }
+
+      .input-group input::placeholder {
+        color: #475569;
+      }
+
+      .console-log {
+        color: #fbbf24;
+      }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Домашка — Встроенные объекты</h1>
+
+        <!-- Задание 1 -->
+        <div class="task">
+            <span class="task-number">Задание 1</span>
+            <h2 class="task-title">Верхний регистр</h2>
+            <p class="task-description">
+                Преобразовать строку <code>'js'</code> в верхний регистр.
+            </p>
+            <div class="code-block">
+<pre><span class="comment">// Задание 1: Верхний регистр</span>
+<span class="keyword">const</span> str = <span class="string">'js'</span>;
+<span class="keyword">const</span> upper = str.<span class="function">toUpperCase</span>();
+console.<span class="function">log</span>(upper);</pre>
+            </div>
+            <button class="btn" onclick="runTask1()">Запустить задание 1</button>
+            <div class="result" id="result1" style="display:none">
+                <div class="result-label">Результат</div>
+                <div class="result-output" id="output1"></div>
+            </div>
+        </div>
+
+        <!-- Задание 2 -->
+        <div class="task">
+            <span class="task-number">Задание 2</span>
+            <h2 class="task-title">Фильтр по началу строки</h2>
+            <p class="task-description">
+                Создать функцию, которая принимает массив строк и строку. Функция возвращает новый массив, содержащий только те элементы первого массива, которые начинаются со второй строки. Регистр символов не влияет на результат.
+            </p>
+            <div class="code-block">
+<pre><span class="comment">// Задание 2: Фильтр по началу строки</span>
+<span class="keyword">function</span> <span class="function">filterByStart</span>(arr, search) {
+    <span class="keyword">return</span> arr.<span class="function">filter</span>(item =>
+        item.<span class="function">toLowerCase</span>().<span class="function">startsWith</span>(search.<span class="function">toLowerCase</span>())
+    );
+}</pre>
+            </div>
+            <div class="input-group">
+                <label>Массив (через запятую):</label>
+                <input type="text" id="t2arr" value="JavaScript, Java, Python, JavaBeans, Javelin" />
+            </div>
+            <div class="input-group">
+                <label>Строка поиска:</label>
+                <input type="text" id="t2search" value="java" />
+            </div>
+            <button class="btn" onclick="runTask2()">Запустить задание 2</button>
+            <div class="result" id="result2" style="display:none">
+                <div class="result-label">Результат</div>
+                <div class="result-output" id="output2"></div>
+            </div>
+        </div>
+
+        <!-- Задание 3 -->
+        <div class="task">
+            <span class="task-number">Задание 3</span>
+            <h2 class="task-title">Округление числа</h2>
+            <p class="task-description">
+                Округлить число 32.58884: до меньшего целого, до большего целого, до ближайшего целого.
+            </p>
+            <div class="code-block">
+<pre><span class="comment">// Задание 3: Округление</span>
+<span class="keyword">const</span> num = <span class="number">32.58884</span>;
+console.<span class="function">log</span>(<span class="string">"Меньшее:"</span>, Math.<span class="function">floor</span>(num));
+console.<span class="function">log</span>(<span class="string">"Большее:"</span>, Math.<span class="function">ceil</span>(num));
+console.<span class="function">log</span>(<span class="string">"Ближайшее:"</span>, Math.<span class="function">round</span>(num));</pre>
+            </div>
+            <button class="btn" onclick="runTask3()">Запустить задание 3</button>
+            <div class="result" id="result3" style="display:none">
+                <div class="result-label">Результат</div>
+                <div class="result-output" id="output3"></div>
+            </div>
+        </div>
+
+        <!-- Задание 4 -->
+        <div class="task">
+            <span class="task-number">Задание 4</span>
+            <h2 class="task-title">Минимум и максимум</h2>
+            <p class="task-description">
+                Найти минимальное и максимальное значения из чисел 52, 53, 49, 77, 21, 32 и вывести их в консоль.
+            </p>
+            <div class="code-block">
+<pre><span class="comment">// Задание 4: Минимум и максимум</span>
+console.<span class="function">log</span>(<span class="string">"Минимум:"</span>, Math.<span class="function">min</span>(<span class="number">52</span>, <span class="number">53</span>, <span class="number">49</span>, <span class="number">77</span>, <span class="number">21</span>, <span class="number">32</span>));
+console.<span class="function">log</span>(<span class="string">"Максимум:"</span>, Math.<span class="function">max</span>(<span class="number">52</span>, <span class="number">53</span>, <span class="number">49</span>, <span class="number">77</span>, <span class="number">21</span>, <span class="number">32</span>));</pre>
+            </div>
+            <button class="btn" onclick="runTask4()">Запустить задание 4</button>
+            <div class="result" id="result4" style="display:none">
+                <div class="result-label">Результат</div>
+                <div class="result-output" id="output4"></div>
+            </div>
+        </div>
+
+        <!-- Задание 5 -->
+        <div class="task">
+            <span class="task-number">Задание 5</span>
+            <h2 class="task-title">Случайное число 1–10</h2>
+            <p class="task-description">
+                Создать функцию, которая выводит в консоль случайное число от 1 до 10.
+            </p>
+            <div class="code-block">
+<pre><span class="comment">// Задание 5: Случайное число 1–10</span>
+<span class="keyword">function</span> <span class="function">random1to10</span>() {
+    <span class="keyword">return</span> Math.<span class="function">floor</span>(Math.<span class="function">random</span>() * <span class="number">10</span>) + <span class="number">1</span>;
+}</pre>
+            </div>
+            <button class="btn" onclick="runTask5()">Запустить задание 5</button>
+            <div class="result" id="result5" style="display:none">
+                <div class="result-label">Результат</div>
+                <div class="result-output" id="output5"></div>
+            </div>
+        </div>
+
+        <!-- Задание 6 -->
+        <div class="task">
+            <span class="task-number">Задание 6</span>
+            <h2 class="task-title">Массив случайных чисел</h2>
+            <p class="task-description">
+                Написать функцию, которая принимает целое число и возвращает массив случайных чисел от 0 до этого числа. Длина массива должна быть в два раза меньше переданного числа.
+            </p>
+            <div class="code-block">
+<pre><span class="comment">// Задание 6: Массив случайных чисел</span>
+<span class="keyword">function</span> <span class="function">randomArray</span>(n) {
+    <span class="keyword">const</span> length = Math.<span class="function">floor</span>(n / <span class="number">2</span>);
+    <span class="keyword">const</span> arr = [];
+    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i < length; i++) {
+        arr.<span class="function">push</span>(Math.<span class="function">floor</span>(Math.<span class="function">random</span>() * (n + <span class="number">1</span>)));
+    }
+    <span class="keyword">return</span> arr;
+}</pre>
+            </div>
+            <div class="input-group">
+                <label>Число:</label>
+                <input type="number" id="t6n" value="10" />
+            </div>
+            <button class="btn" onclick="runTask6()">Запустить задание 6</button>
+            <div class="result" id="result6" style="display:none">
+                <div class="result-label">Результат</div>
+                <div class="result-output" id="output6"></div>
+            </div>
+        </div>
+
+        <!-- Задание 7 -->
+        <div class="task">
+            <span class="task-number">Задание 7</span>
+            <h2 class="task-title">Случайное число в диапазоне</h2>
+            <p class="task-description">
+                Создать функцию, которая принимает два целых числа и возвращает случайное число в этом диапазоне (включительно).
+            </p>
+            <div class="code-block">
+<pre><span class="comment">// Задание 7: Случайное число в диапазоне</span>
+<span class="keyword">function</span> <span class="function">randomInRange</span>(min, max) {
+    <span class="keyword">return</span> Math.<span class="function">floor</span>(Math.<span class="function">random</span>() * (max - min + <span class="number">1</span>)) + min;
+}</pre>
+            </div>
+            <div class="input-group">
+                <label>От:</label>
+                <input type="number" id="t7min" value="5" />
+                <label>До:</label>
+                <input type="number" id="t7max" value="15" />
+            </div>
+            <button class="btn" onclick="runTask7()">Запустить задание 7</button>
+            <div class="result" id="result7" style="display:none">
+                <div class="result-label">Результат</div>
+                <div class="result-output" id="output7"></div>
+            </div>
+        </div>
+
+        <!-- Задание 8 -->
+        <div class="task">
+            <span class="task-number">Задание 8</span>
+            <h2 class="task-title">Текущая дата</h2>
+            <p class="task-description">
+                Вывести в консоль текущую дату.
+            </p>
+            <div class="code-block">
+<pre><span class="comment">// Задание 8: Текущая дата</span>
+<span class="keyword">const</span> currentDate = <span class="keyword">new</span> <span class="function">Date</span>();
+console.<span class="function">log</span>(currentDate);</pre>
+            </div>
+            <button class="btn" onclick="runTask8()">Запустить задание 8</button>
+            <div class="result" id="result8" style="display:none">
+                <div class="result-label">Результат</div>
+                <div class="result-output" id="output8"></div>
+            </div>
+        </div>
+
+        <!-- Задание 9 -->
+        <div class="task">
+            <span class="task-number">Задание 9</span>
+            <h2 class="task-title">Дата через 73 дня</h2>
+            <p class="task-description">
+                Создать переменную <code>currentDate</code>, хранящую текущую дату. Вывести дату, которая наступит через 73 дня после текущей.
+            </p>
+            <div class="code-block">
+<pre><span class="comment">// Задание 9: Дата через 73 дня</span>
+<span class="keyword">const</span> currentDate = <span class="keyword">new</span> <span class="function">Date</span>();
+currentDate.<span class="function">setDate</span>(currentDate.<span class="function">getDate</span>() + <span class="number">73</span>);
+console.<span class="function">log</span>(currentDate);</pre>
+            </div>
+            <button class="btn" onclick="runTask9()">Запустить задание 9</button>
+            <div class="result" id="result9" style="display:none">
+                <div class="result-label">Результат</div>
+                <div class="result-output" id="output9"></div>
+            </div>
+        </div>
+
+        <!-- Задание 10 -->
+        <div class="task">
+            <span class="task-number">Задание 10</span>
+            <h2 class="task-title">Форматированная дата</h2>
+            <p class="task-description">
+                Написать функцию, которая принимает дату и возвращает её в формате:<br>
+                <em>Дата: [число] [месяц на русском] [год] — это [день недели на русском].<br>
+                Время: [часы]:[минуты]:[секунды]</em>
+            </p>
+            <div class="code-block">
+<pre><span class="comment">// Задание 10: Форматированная дата</span>
+<span class="keyword">function</span> <span class="function">formatDate</span>(date) {
+    <span class="keyword">const</span> months = [<span class="string">"января"</span>, <span class="string">"февраля"</span>, <span class="string">"марта"</span>, <span class="string">"апреля"</span>, <span class="string">"мая"</span>, <span class="string">"июня"</span>,
+                    <span class="string">"июля"</span>, <span class="string">"августа"</span>, <span class="string">"сентября"</span>, <span class="string">"октября"</span>, <span class="string">"ноября"</span>, <span class="string">"декабря"</span>];
+    <span class="keyword">const</span> days = [<span class="string">"воскресенье"</span>, <span class="string">"понедельник"</span>, <span class="string">"вторник"</span>, <span class="string">"среда"</span>,
+                  <span class="string">"четверг"</span>, <span class="string">"пятница"</span>, <span class="string">"суббота"</span>];
+    <span class="keyword">return</span> <span class="string">"Дата: "</span> + date.getDate() + <span class="string">" "</span> + months[date.getMonth()] + <span class="string">" "</span> + date.getFullYear() + <span class="string">" — это "</span> + days[date.getDay()] + <span class="string">".\nВремя: "</span> + String(date.getHours()).padStart(2, <span class="string">'0'</span>) + <span class="string">":"</span> + String(date.getMinutes()).padStart(2, <span class="string">'0'</span>) + <span class="string">":"</span> + String(date.getSeconds()).padStart(2, <span class="string">'0'</span>);
+}</pre>
+            </div>
+            <div class="input-group">
+                <label>Дата (YYYY-MM-DD HH:mm:ss):</label>
+                <input type="text" id="t10date" value="2024-03-15 14:30:45" placeholder="2024-03-15 14:30:45" />
+            </div>
+            <button class="btn" onclick="runTask10()">Запустить задание 10</button>
+            <div class="result" id="result10" style="display:none">
+                <div class="result-label">Результат</div>
+                <div class="result-output" id="output10"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // === Задание 1 ===
+        function runTask1() {
+            const str = 'js';
+            const upper = str.toUpperCase();
+            console.log(upper);
+            document.getElementById("result1").style.display = "block";
+            document.getElementById("output1").innerHTML = "'" + str + "' -> '" + upper + "'";
+        }
+
+        // === Задание 2 ===
+        function filterByStart(arr, search) {
+            return arr.filter(item =>
+                item.toLowerCase().startsWith(search.toLowerCase())
+            );
+        }
+
+        function runTask2() {
+            let input = document.getElementById("t2arr").value;
+            let search = document.getElementById("t2search").value;
+            let arr = input.split(',').map(s => s.trim());
+            let result = filterByStart(arr, search);
+            console.log(result);
+            document.getElementById("result2").style.display = "block";
+            document.getElementById("output2").innerHTML =
+                "Массив: [" + arr.join(", ") + "]<br>Поиск: '" + search + "'<br>Результат: [" + result.join(", ") + "]";
+        }
+
+        // === Задание 3 ===
+        function runTask3() {
+            const num = 32.58884;
+            console.log("Меньшее:", Math.floor(num));
+            console.log("Большее:", Math.ceil(num));
+            console.log("Ближайшее:", Math.round(num));
+            document.getElementById("result3").style.display = "block";
+            document.getElementById("output3").innerHTML =
+                "Число: " + num + "<br>" +
+                "Меньшее (floor): " + Math.floor(num) + "<br>" +
+                "Большее (ceil): " + Math.ceil(num) + "<br>" +
+                "Ближайшее (round): " + Math.round(num);
+        }
+
+        // === Задание 4 ===
+        function runTask4() {
+            const min = Math.min(52, 53, 49, 77, 21, 32);
+            const max = Math.max(52, 53, 49, 77, 21, 32);
+            console.log("Минимум:", min);
+            console.log("Максимум:", max);
+            document.getElementById("result4").style.display = "block";
+            document.getElementById("output4").innerHTML =
+                "Числа: 52, 53, 49, 77, 21, 32<br>" +
+                "Минимум: " + min + "<br>" +
+                "Максимум: " + max;
+        }
+
+        // === Задание 5 ===
+        function random1to10() {
+            return Math.floor(Math.random() * 10) + 1;
+        }
+
+        function runTask5() {
+            let result = random1to10();
+            console.log(result);
+            document.getElementById("result5").style.display = "block";
+            document.getElementById("output5").innerHTML = "Случайное число от 1 до 10: " + result;
+        }
+
+        // === Задание 6 ===
+        function randomArray(n) {
+            const length = Math.floor(n / 2);
+            const arr = [];
+            for (let i = 0; i < length; i++) {
+                arr.push(Math.floor(Math.random() * (n + 1)));
+            }
+            return arr;
+        }
+
+        function runTask6() {
+            let n = Number(document.getElementById("t6n").value);
+            let result = randomArray(n);
+            console.log(result);
+            document.getElementById("result6").style.display = "block";
+            document.getElementById("output6").innerHTML =
+                "Вход: " + n + "<br>Длина массива: " + Math.floor(n / 2) + "<br>Результат: [" + result.join(", ") + "]";
+        }
+
+        // === Задание 7 ===
+        function randomInRange(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        function runTask7() {
+            let min = Number(document.getElementById("t7min").value);
+            let max = Number(document.getElementById("t7max").value);
+            let result = randomInRange(min, max);
+            console.log(result);
+            document.getElementById("result7").style.display = "block";
+            document.getElementById("output7").innerHTML =
+                "Диапазон: [" + min + ", " + max + "]<br>Случайное число: " + result;
+        }
+
+        // === Задание 8 ===
+        function runTask8() {
+            const currentDate = new Date();
+            console.log(currentDate);
+            document.getElementById("result8").style.display = "block";
+            document.getElementById("output8").innerHTML = currentDate.toString();
+        }
+
+        // === Задание 9 ===
+        function runTask9() {
+            const currentDate = new Date();
+            currentDate.setDate(currentDate.getDate() + 73);
+            console.log(currentDate);
+            document.getElementById("result9").style.display = "block";
+            document.getElementById("output9").innerHTML =
+                "Текущая дата + 73 дня:<br>" + currentDate.toString();
+        }
+
+        // === Задание 10 ===
+        function formatDate(date) {
+            const months = ["января", "февраля", "марта", "апреля", "мая", "июня",
+                            "июля", "августа", "сентября", "октября", "ноября", "декабря"];
+            const days = ["воскресенье", "понедельник", "вторник", "среда",
+                          "четверг", "пятница", "суббота"];
+            return "Дата: " + date.getDate() + " " + months[date.getMonth()] + " " + date.getFullYear() + " — это " + days[date.getDay()] + ".\nВремя: " + String(date.getHours()).padStart(2, '0') + ":" + String(date.getMinutes()).padStart(2, '0') + ":" + String(date.getSeconds()).padStart(2, '0');
+        }
+
+        function runTask10() {
+            let input = document.getElementById("t10date").value;
+            let date = new Date(input);
+            if (isNaN(date.getTime())) {
+                document.getElementById("result10").style.display = "block";
+                document.getElementById("output10").innerHTML = '<span class="error">Некорректная дата. Используйте формат YYYY-MM-DD HH:mm:ss</span>';
+                return;
+            }
+            let result = formatDate(date);
+            console.log(result);
+            document.getElementById("result10").style.display = "block";
+            document.getElementById("output10").innerHTML = result.replace(/\n/g, "<br>");
+        }
+    </script>
+</body>
+</html>
