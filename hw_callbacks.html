@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Домашка — колбэки</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #0f172a;
+        color: #e2e8f0;
+        min-height: 100vh;
+        padding: 40px 20px;
+      }
+
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+      }
+
+      h1 {
+        text-align: center;
+        color: #38bdf8;
+        margin-bottom: 40px;
+        font-size: 2.2rem;
+        text-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
+      }
+
+      .task {
+        background-color: #1e293b;
+        border-radius: 16px;
+        padding: 28px 32px;
+        margin-bottom: 24px;
+        border-left: 4px solid #38bdf8;
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+
+      .task:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+      }
+
+      .task-number {
+        display: inline-block;
+        background-color: #38bdf8;
+        color: #0f172a;
+        font-weight: bold;
+        font-size: 0.85rem;
+        padding: 4px 14px;
+        border-radius: 20px;
+        margin-bottom: 12px;
+      }
+
+      .task-title {
+        font-size: 1.3rem;
+        color: #f1f5f9;
+        margin-bottom: 12px;
+      }
+
+      .task-description {
+        color: #94a3b8;
+        margin-bottom: 16px;
+        line-height: 1.6;
+      }
+
+      .code-block {
+        background-color: #0f172a;
+        border-radius: 10px;
+        padding: 20px 24px;
+        overflow-x: auto;
+        border: 1px solid #334155;
+      }
+
+      .code-block pre {
+        margin: 0;
+        font-family: "Consolas", "Monaco", "Courier New", monospace;
+        font-size: 0.95rem;
+        line-height: 1.7;
+        color: #e2e8f0;
+      }
+
+      .code-block .comment {
+        color: #64748b;
+      }
+
+      .code-block .keyword {
+        color: #c084fc;
+      }
+
+      .code-block .string {
+        color: #4ade80;
+      }
+
+      .code-block .function {
+        color: #60a5fa;
+      }
+
+      .code-block .number {
+        color: #fbbf24;
+      }
+
+      .result {
+        margin-top: 16px;
+        padding: 14px 18px;
+        background-color: #0f172a;
+        border-radius: 10px;
+        border: 1px solid #334155;
+      }
+
+      .result-label {
+        font-size: 0.8rem;
+        color: #38bdf8;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 8px;
+      }
+
+      .result-output {
+        font-family: "Consolas", "Monaco", "Courier New", monospace;
+        color: #4ade80;
+        font-size: 0.95rem;
+        line-height: 1.6;
+      }
+
+      .result-output .warn {
+        color: #fbbf24;
+      }
+
+      .result-output .error {
+        color: #f87171;
+      }
+
+      .btn {
+        display: inline-block;
+        margin-top: 14px;
+        padding: 10px 24px;
+        background-color: #38bdf8;
+        color: #0f172a;
+        border: none;
+        border-radius: 8px;
+        font-size: 0.95rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition:
+          background-color 0.2s ease,
+          transform 0.15s ease;
+      }
+
+      .btn:hover {
+        background-color: #7dd3fc;
+        transform: scale(1.03);
+      }
+
+      .btn:active {
+        transform: scale(0.98);
+      }
+
+      .input-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 12px;
+        align-items: center;
+      }
+
+      .input-group label {
+        color: #94a3b8;
+        font-size: 0.9rem;
+      }
+
+      .input-group input, .input-group textarea {
+        background-color: #0f172a;
+        border: 1px solid #334155;
+        border-radius: 6px;
+        padding: 8px 12px;
+        color: #e2e8f0;
+        font-family: "Consolas", "Monaco", "Courier New", monospace;
+        font-size: 0.9rem;
+        outline: none;
+        transition: border-color 0.2s ease;
+      }
+
+      .input-group input:focus, .input-group textarea:focus {
+        border-color: #38bdf8;
+      }
+
+      .input-group input::placeholder {
+        color: #475569;
+      }
+
+      .console-log {
+        color: #fbbf24;
+      }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Домашка — колбэки</h1>
+
+        <!-- Задание 1 -->
+        <div class="task">
+            <span class="task-number">Задание 1</span>
+            <h2 class="task-title">Сортировка по возрасту</h2>
+            <p class="task-description">
+                С помощью метода массива <code>sort</code> отсортируйте массив <code>people</code> по возрастанию возраста и выведите результат в консоль.
+            </p>
+            <div class="code-block">
+<pre><span class="comment">// Задание 1: Сортировка по возрасту</span>
+<span class="keyword">const</span> people = [
+    { name: <span class="string">'Глеб'</span>, age: <span class="number">29</span> },
+    { name: <span class="string">'Анна'</span>, age: <span class="number">17</span> },
+    { name: <span class="string">'Олег'</span>, age: <span class="number">7</span> },
+    { name: <span class="string">'Оксана'</span>, age: <span class="number">47</span> }
+];
+
+people.<span class="function">sort</span>((a, b) => a.age - b.age);
+console.<span class="function">log</span>(people);</pre>
+            </div>
+            <button class="btn" onclick="runTask1()">Запустить задание 1</button>
+            <div class="result" id="result1" style="display:none">
+                <div class="result-label">Результат</div>
+                <div class="result-output" id="output1"></div>
+            </div>
+        </div>
+
+        <!-- Задание 2 -->
+        <div class="task">
+            <span class="task-number">Задание 2</span>
+            <h2 class="task-title">Своя функция filter</h2>
+            <p class="task-description">
+                Реализуйте функцию <code>filter</code>, которая должна работать аналогично методу массива <code>filter</code>. Возьмите за основу функцию <code>map</code>, которую мы реализовывали на уроке.
+            </p>
+            <div class="code-block">
+<pre><span class="comment">// Задание 2: Своя функция filter</span>
+<span class="keyword">function</span> <span class="function">isPositive</span>(num) {
+    <span class="keyword">return</span> num > <span class="number">0</span>;
+}
+
+<span class="keyword">function</span> <span class="function">isMale</span>(person) {
+    <span class="keyword">return</span> person.gender === <span class="string">'male'</span>;
+}
+
+<span class="keyword">function</span> <span class="function">filter</span>(arr, ruleFunction) {
+    <span class="keyword">const</span> result = [];
+    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i < arr.length; i++) {
+        <span class="keyword">if</span> (ruleFunction(arr[i])) {
+            result.<span class="function">push</span>(arr[i]);
+        }
+    }
+    <span class="keyword">return</span> result;
+}</pre>
+            </div>
+            <div class="input-group">
+                <label>Массив чисел (через запятую):</label>
+                <input type="text" id="t2arr" value="3, -4, 1, 9" />
+            </div>
+            <button class="btn" onclick="runTask2Numbers()">Запустить filter чисел</button>
+            <div class="result" id="result2a" style="display:none">
+                <div class="result-label">Результат</div>
+                <div class="result-output" id="output2a"></div>
+            </div>
+            <br><br>
+            <button class="btn" onclick="runTask2People()">Запустить filter людей</button>
+            <div class="result" id="result2b" style="display:none">
+                <div class="result-label">Результат</div>
+                <div class="result-output" id="output2b"></div>
+            </div>
+        </div>
+
+        <!-- Задание 3 -->
+        <div class="task">
+            <span class="task-number">Задание 3</span>
+            <h2 class="task-title">Таймер на 30 секунд</h2>
+            <p class="task-description">
+                Напишите программу, которая на протяжении 30 секунд каждые 3 секунды будет выводить в консоль текущую дату. Последней строкой должно выводиться сообщение «30 секунд прошло».
+            </p>
+            <div class="code-block">
+<pre><span class="comment">// Задание 3: Таймер на 30 секунд</span>
+<span class="keyword">let</span> counter = <span class="number">0</span>;
+<span class="keyword">const</span> interval = setInterval(() => {
+    console.<span class="function">log</span>(<span class="keyword">new</span> <span class="function">Date</span>());
+    counter += <span class="number">3</span>;
+    <span class="keyword">if</span> (counter >= <span class="number">30</span>) {
+        clearInterval(interval);
+        console.<span class="function">log</span>(<span class="string">'30 секунд прошло'</span>);
+    }
+}, <span class="number">3000</span>);</pre>
+            </div>
+            <button class="btn" onclick="runTask3()">Запустить задание 3</button>
+            <div class="result" id="result3" style="display:none">
+                <div class="result-label">Результат</div>
+                <div class="result-output" id="output3"></div>
+            </div>
+        </div>
+
+        <!-- Задание 4 -->
+        <div class="task">
+            <span class="task-number">Задание 4</span>
+            <h2 class="task-title">Отложенное приветствие</h2>
+            <p class="task-description">
+                Допишите функцию <code>delayForSecond</code> так, чтобы приветствие выводилось в консоль не сразу, а спустя 1 секунду. Используйте <code>setTimeout</code>.
+            </p>
+            <div class="code-block">
+<pre><span class="comment">// Задание 4: Отложенное приветствие</span>
+<span class="keyword">function</span> <span class="function">delayForSecond</span>(callback) {
+    setTimeout(callback, <span class="number">1000</span>);
+}
+
+delayForSecond(<span class="keyword">function</span> () {
+    console.<span class="function">log</span>(<span class="string">'Привет, Глеб!'</span>);
+});</pre>
+            </div>
+            <button class="btn" onclick="runTask4()">Запустить задание 4</button>
+            <div class="result" id="result4" style="display:none">
+                <div class="result-label">Результат</div>
+                <div class="result-output" id="output4"></div>
+            </div>
+        </div>
+
+        <!-- Задание 5 -->
+        <div class="task">
+            <span class="task-number">Задание 5</span>
+            <h2 class="task-title">Правильный порядок вызовов</h2>
+            <p class="task-description">
+                Исправьте код так, чтобы сначала выводилось «Прошла одна секунда», а затем «Привет, Глеб!». Код функций <code>delayForSecond</code> и <code>sayHi</code> менять нельзя.
+            </p>
+            <div class="code-block">
+<pre><span class="comment">// Задание 5: Правильный порядок вызовов</span>
+<span class="keyword">function</span> <span class="function">delayForSecond</span>(cb) {
+    setTimeout(() => {
+        console.<span class="function">log</span>(<span class="string">'Прошла одна секунда'</span>);
+        <span class="keyword">if</span> (cb) { cb(); }
+    }, <span class="number">1000</span>);
+}
+
+<span class="keyword">function</span> <span class="function">sayHi</span>(name) {
+    console.<span class="function">log</span>(<span class="string">'Привет, ${name}!'</span>);
+}
+
+<span class="comment">// Исправленный вызов:</span>
+delayForSecond(() => sayHi(<span class="string">'Глеб'</span>));</pre>
+            </div>
+            <button class="btn" onclick="runTask5()">Запустить задание 5</button>
+            <div class="result" id="result5" style="display:none">
+                <div class="result-label">Результат</div>
+                <div class="result-output" id="output5"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // === Задание 1 ===
+        function runTask1() {
+            const people = [
+                { name: 'Глеб', age: 29 },
+                { name: 'Анна', age: 17 },
+                { name: 'Олег', age: 7 },
+                { name: 'Оксана', age: 47 }
+            ];
+            people.sort((a, b) => a.age - b.age);
+            console.log(people);
+
+            document.getElementById("result1").style.display = "block";
+            document.getElementById("output1").innerHTML = 
+                people.map(p => `{ name: '${p.name}', age: ${p.age} }`).join('<br>');
+        }
+
+        // === Задание 2 ===
+        function isPositive(num) {
+            return num > 0;
+        }
+
+        function isMale(person) {
+            return person.gender === 'male';
+        }
+
+        function filter(arr, ruleFunction) {
+            const result = [];
+            for (let i = 0; i < arr.length; i++) {
+                if (ruleFunction(arr[i])) {
+                    result.push(arr[i]);
+                }
+            }
+            return result;
+        }
+
+        function runTask2Numbers() {
+            let input = document.getElementById("t2arr").value;
+            let arr = input.split(',').map(s => Number(s.trim()));
+            let result = filter(arr, isPositive);
+            console.log(result);
+
+            document.getElementById("result2a").style.display = "block";
+            document.getElementById("output2a").innerHTML = 
+                "Массив: [" + arr.join(", ") + "]<br>" +
+                "Фильтр: isPositive<br>" +
+                "Результат: [" + result.join(", ") + "]";
+        }
+
+        function runTask2People() {
+            const people = [
+                {name: 'Глеб', gender: 'male'},
+                {name: 'Анна', gender: 'female'},
+                {name: 'Олег', gender: 'male'},
+                {name: 'Оксана', gender: 'female'}
+            ];
+            let result = filter(people, isMale);
+            console.log(result);
+
+            document.getElementById("result2b").style.display = "block";
+            document.getElementById("output2b").innerHTML = 
+                "Массив: [" + people.map(p => `{name: '${p.name}', gender: '${p.gender}'}`).join(", ") + "]<br>" +
+                "Фильтр: isMale<br>" +
+                "Результат: [" + result.map(p => `{name: '${p.name}', gender: '${p.gender}'}`).join(", ") + "]";
+        }
+
+        // === Задание 3 ===
+        function runTask3() {
+            let output = document.getElementById("output3");
+            output.innerHTML = "";
+            document.getElementById("result3").style.display = "block";
+
+            let counter = 0;
+            const interval = setInterval(() => {
+                const now = new Date();
+                console.log(now);
+                output.innerHTML += now.toString() + "<br>";
+                counter += 3;
+                if (counter >= 30) {
+                    clearInterval(interval);
+                    console.log('30 секунд прошло');
+                    output.innerHTML += '<span class="warn">30 секунд прошло</span>';
+                }
+            }, 3000);
+        }
+
+        // === Задание 4 ===
+        function runTask4() {
+            document.getElementById("result4").style.display = "block";
+            document.getElementById("output4").innerHTML = "Ожидание 1 секунду...";
+
+            function delayForSecond(callback) {
+                setTimeout(callback, 1000);
+            }
+
+            delayForSecond(function () {
+                console.log('Привет, Глеб!');
+                document.getElementById("output4").innerHTML = "Привет, Глеб!";
+            });
+        }
+
+        // === Задание 5 ===
+        function runTask5() {
+            document.getElementById("result5").style.display = "block";
+            document.getElementById("output5").innerHTML = "Ожидание 1 секунду...";
+
+            function delayForSecond(cb) {
+                setTimeout(() => {
+                    console.log('Прошла одна секунда');
+                    if(cb) { cb(); }
+                }, 1000)
+            }
+
+            function sayHi (name) {
+                console.log(`Привет, ${name}!`);
+            }
+
+            delayForSecond(() => sayHi('Глеб'));
+
+            setTimeout(() => {
+                document.getElementById("output5").innerHTML = 
+                    "Прошла одна секунда<br>Привет, Глеб!";
+            }, 1100);
+        }
+    </script>
+</body>
+</html>
