@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Домашка — DOM</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #0f172a;
+        color: #e2e8f0;
+        min-height: 100vh;
+        padding: 40px 20px;
+      }
+
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+      }
+
+      h1 {
+        text-align: center;
+        color: #38bdf8;
+        margin-bottom: 40px;
+        font-size: 2.2rem;
+        text-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
+      }
+
+      .task {
+        background-color: #1e293b;
+        border-radius: 16px;
+        padding: 28px 32px;
+        margin-bottom: 24px;
+        border-left: 4px solid #38bdf8;
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+
+      .task:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+      }
+
+      .task-number {
+        display: inline-block;
+        background-color: #38bdf8;
+        color: #0f172a;
+        font-weight: bold;
+        font-size: 0.85rem;
+        padding: 4px 14px;
+        border-radius: 20px;
+        margin-bottom: 12px;
+      }
+
+      .task-title {
+        font-size: 1.3rem;
+        color: #f1f5f9;
+        margin-bottom: 12px;
+      }
+
+      .task-description {
+        color: #94a3b8;
+        margin-bottom: 16px;
+        line-height: 1.6;
+      }
+
+      .code-block {
+        background-color: #0f172a;
+        border-radius: 10px;
+        padding: 20px 24px;
+        overflow-x: auto;
+        border: 1px solid #334155;
+      }
+
+      .code-block pre {
+        margin: 0;
+        font-family: "Consolas", "Monaco", "Courier New", monospace;
+        font-size: 0.95rem;
+        line-height: 1.7;
+        color: #e2e8f0;
+      }
+
+      .code-block .comment {
+        color: #64748b;
+      }
+
+      .code-block .keyword {
+        color: #c084fc;
+      }
+
+      .code-block .string {
+        color: #4ade80;
+      }
+
+      .code-block .function {
+        color: #60a5fa;
+      }
+
+      .code-block .number {
+        color: #fbbf24;
+      }
+
+      .result {
+        margin-top: 16px;
+        padding: 14px 18px;
+        background-color: #0f172a;
+        border-radius: 10px;
+        border: 1px solid #334155;
+      }
+
+      .result-label {
+        font-size: 0.8rem;
+        color: #38bdf8;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 8px;
+      }
+
+      .result-output {
+        font-family: "Consolas", "Monaco", "Courier New", monospace;
+        color: #4ade80;
+        font-size: 0.95rem;
+        line-height: 1.6;
+      }
+
+      .result-output .warn {
+        color: #fbbf24;
+      }
+
+      .result-output .error {
+        color: #f87171;
+      }
+
+      .btn {
+        display: inline-block;
+        margin-top: 14px;
+        padding: 10px 24px;
+        background-color: #38bdf8;
+        color: #0f172a;
+        border: none;
+        border-radius: 8px;
+        font-size: 0.95rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition:
+          background-color 0.2s ease,
+          transform 0.15s ease;
+      }
+
+      .btn:hover {
+        background-color: #7dd3fc;
+        transform: scale(1.03);
+      }
+
+      .btn:active {
+        transform: scale(0.98);
+      }
+
+      .input-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 12px;
+        align-items: center;
+      }
+
+      .input-group label {
+        color: #94a3b8;
+        font-size: 0.9rem;
+      }
+
+      .input-group input, .input-group textarea {
+        background-color: #0f172a;
+        border: 1px solid #334155;
+        border-radius: 6px;
+        padding: 8px 12px;
+        color: #e2e8f0;
+        font-family: "Consolas", "Monaco", "Courier New", monospace;
+        font-size: 0.9rem;
+        outline: none;
+        transition: border-color 0.2s ease;
+      }
+
+      .input-group input:focus, .input-group textarea:focus {
+        border-color: #38bdf8;
+      }
+
+      .input-group input::placeholder {
+        color: #475569;
+      }
+
+      .console-log {
+        color: #fbbf24;
+      }
+
+      /* Styles for interactive task elements */
+      .task-h1 {
+        color: #f1f5f9;
+        font-size: 1.5rem;
+        margin: 12px 0;
+      }
+
+      .task-p {
+        color: #cbd5e1;
+        font-size: 1rem;
+        line-height: 1.5;
+        margin: 8px 0;
+      }
+
+      .task-description-box {
+        background-color: #0f172a;
+        border-radius: 8px;
+        padding: 12px 16px;
+        margin: 10px 0;
+      }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Домашка — DOM</h1>
+
+        <!-- Задание 1 -->
+        <div class="task">
+            <span class="task-number">Задание 1</span>
+            <h2 class="task-title">Скрытие и показ текста</h2>
+            <p class="task-description">
+                Создайте кнопку, которая будет скрывать и показывать текст в заголовке <code>&lt;h1&gt;</code>.
+                Нажатие на кнопку «Скрыть» скрывает текст заголовка. Повторное нажатие показывает текст снова.
+            </p>
+            <div class="code-block">
+<pre><span class="comment">// Задание 1: Скрытие и показ текста</span>
+<span class="keyword">const</span> heading = document.<span class="function">querySelector</span>(<span class="string">'#task1-heading'</span>);
+<span class="keyword">const</span> btn = document.<span class="function">querySelector</span>(<span class="string">'#task1-btn'</span>);
+
+btn.<span class="function">addEventListener</span>(<span class="string">'click'</span>, () => {
+    heading.style.display = heading.style.display === <span class="string">'none'</span>
+        ? <span class="string">'block'</span>
+        : <span class="string">'none'</span>;
+});</pre>
+            </div>
+            <div class="result" style="display:block">
+                <div class="result-label">Интерактивная демонстрация</div>
+                <h1 id="task1-heading" class="task-h1">Это заголовок, который можно скрыть</h1>
+                <button class="btn" id="task1-btn">Скрыть / Показать</button>
+            </div>
+        </div>
+
+        <!-- Задание 2 -->
+        <div class="task">
+            <span class="task-number">Задание 2</span>
+            <h2 class="task-title">Изменение стиля элемента</h2>
+            <p class="task-description">
+                Создайте кнопку, которая изменяет цвет текста в элементе <code>&lt;p&gt;</code>.
+                Нажатие на кнопку «Изменить цвет» делает текст абзаца синим.
+            </p>
+            <div class="code-block">
+<pre><span class="comment">// Задание 2: Изменение стиля элемента</span>
+<span class="keyword">const</span> paragraph = document.<span class="function">querySelector</span>(<span class="string">'#task2-paragraph'</span>);
+<span class="keyword">const</span> btn = document.<span class="function">querySelector</span>(<span class="string">'#task2-btn'</span>);
+
+btn.<span class="function">addEventListener</span>(<span class="string">'click'</span>, () => {
+    paragraph.style.color = <span class="string">'blue'</span>;
+});</pre>
+            </div>
+            <div class="result" style="display:block">
+                <div class="result-label">Интерактивная демонстрация</div>
+                <p id="task2-paragraph" class="task-p">Этот текст станет синим при нажатии на кнопку.</p>
+                <button class="btn" id="task2-btn">Изменить цвет</button>
+            </div>
+        </div>
+
+        <!-- Задание 3 -->
+        <div class="task">
+            <span class="task-number">Задание 3</span>
+            <h2 class="task-title">Динамическое изменение текста</h2>
+            <p class="task-description">
+                Создайте кнопку, которая меняет текст в заголовке <code>&lt;h1&gt;</code>.
+                Нажатие на кнопку «Изменить текст» меняет текст заголовка на «Привет, мир!».
+            </p>
+            <div class="code-block">
+<pre><span class="comment">// Задание 3: Динамическое изменение текста</span>
+<span class="keyword">const</span> heading = document.<span class="function">querySelector</span>(<span class="string">'#task3-heading'</span>);
+<span class="keyword">const</span> btn = document.<span class="function">querySelector</span>(<span class="string">'#task3-btn'</span>);
+
+btn.<span class="function">addEventListener</span>(<span class="string">'click'</span>, () => {
+    heading.textContent = <span class="string">'Привет, мир!'</span>;
+});</pre>
+            </div>
+            <div class="result" style="display:block">
+                <div class="result-label">Интерактивная демонстрация</div>
+                <h1 id="task3-heading" class="task-h1">Исходный текст заголовка</h1>
+                <button class="btn" id="task3-btn">Изменить текст</button>
+            </div>
+        </div>
+
+        <!-- Задание 4 -->
+        <div class="task">
+            <span class="task-number">Задание 4</span>
+            <h2 class="task-title">Поиск и изменение элементов по классу</h2>
+            <p class="task-description">
+                Найдите все элементы с классом <code>description</code> и измените их текст на «Измененный текст».
+            </p>
+            <div class="code-block">
+<pre><span class="comment">// Задание 4: Поиск и изменение элементов по классу</span>
+<span class="keyword">const</span> elements = document.<span class="function">querySelectorAll</span>(<span class="string">'.description'</span>);
+
+<span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i < elements.length; i++) {
+    elements[i].textContent = <span class="string">'Измененный текст'</span>;
+}</pre>
+            </div>
+            <div class="result" style="display:block">
+                <div class="result-label">Интерактивная демонстрация</div>
+                <div class="task-description-box">
+                    <p class="task-p description">Первый элемент с классом description</p>
+                    <p class="task-p description">Второй элемент с классом description</p>
+                    <p class="task-p">Этот элемент без класса description</p>
+                    <p class="task-p description">Третий элемент с классом description</p>
+                </div>
+                <button class="btn" id="task4-btn">Изменить текст</button>
+            </div>
+        </div>
+
+        <!-- Задание 5 -->
+        <div class="task">
+            <span class="task-number">Задание 5</span>
+            <h2 class="task-title">Работа с querySelectorAll</h2>
+            <p class="task-description">
+                Создайте несколько элементов <code>&lt;p&gt;</code> с разными классами. Используйте <code>querySelectorAll</code>, чтобы найти все элементы с классом <code>description</code> и изменить их текст.
+            </p>
+            <div class="code-block">
+<pre><span class="comment">// Задание 5: Работа с querySelectorAll</span>
+<span class="keyword">const</span> elements = document.<span class="function">querySelectorAll</span>(<span class="string">'.task5-description'</span>);
+
+<span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i < elements.length; i++) {
+    elements[i].textContent = <span class="string">'Новый текст'</span>;
+}</pre>
+            </div>
+            <div class="result" style="display:block">
+                <div class="result-label">Интерактивная демонстрация</div>
+                <div class="task-description-box">
+                    <p class="task-p task5-description">Первый description</p>
+                    <p class="task-p other-class">Элемент с другим классом</p>
+                    <p class="task-p task5-description">Второй description</p>
+                    <p class="task-p another-class">Ещё один другой класс</p>
+                    <p class="task-p task5-description">Третий description</p>
+                </div>
+                <button class="btn" id="task5-btn">Изменить текст</button>
+            </div>
+        </div>
+
+        <!-- Задание 6 -->
+        <div class="task">
+            <span class="task-number">Задание 6</span>
+            <h2 class="task-title">Добавление нового элемента в DOM</h2>
+            <p class="task-description">
+                Создайте кнопку, которая добавляет новый элемент <code>&lt;p&gt;</code> с текстом в конец документа.
+                Нажатие на кнопку «Добавить элемент» добавляет в конец страницы новый абзац с текстом «Новый абзац».
+            </p>
+            <div class="code-block">
+<pre><span class="comment">// Задание 6: Добавление нового элемента в DOM</span>
+<span class="keyword">const</span> btn = document.<span class="function">querySelector</span>(<span class="string">'#task6-btn'</span>);
+<span class="keyword">const</span> container = document.<span class="function">querySelector</span>(<span class="string">'#task6-container'</span>);
+
+btn.<span class="function">addEventListener</span>(<span class="string">'click'</span>, () => {
+    <span class="keyword">const</span> newP = document.<span class="function">createElement</span>(<span class="string">'p'</span>);
+    newP.textContent = <span class="string">'Новый абзац'</span>;
+    newP.className = <span class="string">'task-p'</span>;
+    container.<span class="function">appendChild</span>(newP);
+});</pre>
+            </div>
+            <div class="result" style="display:block">
+                <div class="result-label">Интерактивная демонстрация</div>
+                <div id="task6-container" class="task-description-box">
+                    <p class="task-p">Существующий абзац</p>
+                </div>
+                <button class="btn" id="task6-btn">Добавить элемент</button>
+            </div>
+        </div>
+
+        <!-- Задание 7 -->
+        <div class="task">
+            <span class="task-number">Задание 7</span>
+            <h2 class="task-title">Удаление элемента</h2>
+            <p class="task-description">
+                Создайте кнопку, которая удаляет первый элемент <code>&lt;p&gt;</code> с классом <code>description</code>.
+                Нажатие на кнопку «Удалить элемент» удаляет первый абзац с классом <code>description</code> со страницы.
+            </p>
+            <div class="code-block">
+<pre><span class="comment">// Задание 7: Удаление элемента</span>
+<span class="keyword">const</span> btn = document.<span class="function">querySelector</span>(<span class="string">'#task7-btn'</span>);
+
+btn.<span class="function">addEventListener</span>(<span class="string">'click'</span>, () => {
+    <span class="keyword">const</span> firstDesc = document.<span class="function">querySelector</span>(<span class="string">'.task7-description'</span>);
+    <span class="keyword">if</span> (firstDesc) {
+        firstDesc.<span class="function">remove</span>();
+    }
+});</pre>
+            </div>
+            <div class="result" style="display:block">
+                <div class="result-label">Интерактивная демонстрация</div>
+                <div id="task7-container" class="task-description-box">
+                    <p class="task-p task7-description">Первый элемент description (удалится первым)</p>
+                    <p class="task-p">Элемент без класса</p>
+                    <p class="task-p task7-description">Второй элемент description</p>
+                    <p class="task-p task7-description">Третий элемент description</p>
+                </div>
+                <button class="btn" id="task7-btn">Удалить элемент</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // === Задание 1: Скрытие и показ текста ===
+        const task1Heading = document.querySelector('#task1-heading');
+        const task1Btn = document.querySelector('#task1-btn');
+
+        task1Btn.addEventListener('click', () => {
+            if (task1Heading.style.display === 'none') {
+                task1Heading.style.display = 'block';
+                task1Btn.textContent = 'Скрыть';
+            } else {
+                task1Heading.style.display = 'none';
+                task1Btn.textContent = 'Показать';
+            }
+        });
+
+        // === Задание 2: Изменение стиля элемента ===
+        const task2Paragraph = document.querySelector('#task2-paragraph');
+        const task2Btn = document.querySelector('#task2-btn');
+
+        task2Btn.addEventListener('click', () => {
+            task2Paragraph.style.color = 'blue';
+        });
+
+        // === Задание 3: Динамическое изменение текста ===
+        const task3Heading = document.querySelector('#task3-heading');
+        const task3Btn = document.querySelector('#task3-btn');
+
+        task3Btn.addEventListener('click', () => {
+            task3Heading.textContent = 'Привет, мир!';
+        });
+
+        // === Задание 4: Поиск и изменение элементов по классу ===
+        const task4Btn = document.querySelector('#task4-btn');
+
+        task4Btn.addEventListener('click', () => {
+            const elements = document.querySelectorAll('.description');
+            for (let i = 0; i < elements.length; i++) {
+                elements[i].textContent = 'Измененный текст';
+            }
+        });
+
+        // === Задание 5: Работа с querySelectorAll ===
+        const task5Btn = document.querySelector('#task5-btn');
+
+        task5Btn.addEventListener('click', () => {
+            const elements = document.querySelectorAll('.task5-description');
+            for (let i = 0; i < elements.length; i++) {
+                elements[i].textContent = 'Новый текст';
+            }
+        });
+
+        // === Задание 6: Добавление нового элемента в DOM ===
+        const task6Btn = document.querySelector('#task6-btn');
+        const task6Container = document.querySelector('#task6-container');
+
+        task6Btn.addEventListener('click', () => {
+            const newP = document.createElement('p');
+            newP.textContent = 'Новый абзац';
+            newP.className = 'task-p';
+            task6Container.appendChild(newP);
+        });
+
+        // === Задание 7: Удаление элемента ===
+        const task7Btn = document.querySelector('#task7-btn');
+
+        task7Btn.addEventListener('click', () => {
+            const firstDesc = document.querySelector('.task7-description');
+            if (firstDesc) {
+                firstDesc.remove();
+            }
+        });
+    </script>
+</body>
+</html>
